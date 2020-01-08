@@ -10,8 +10,8 @@ description:        Intro. course in data-drive management
 
 # Site subpath, e.g. /blog
 url :               "https://ds4ps.github.io"
-baseurl:            "/cpp-526-fall-2019"
-course_url:         "http://ds4ps.org/cpp-526-fall-2019/"
+baseurl:            "/cpp-526-spr-2020"
+course_url:         "http://ds4ps.org/cpp-526-spr-2020/"
 
 # Permalink URLs structure, for permalink style options see: https://jekyllrb.com/docs/permalinks/
 permalink:          /:title/
@@ -57,8 +57,8 @@ author:
 github_info:
     username:          DS4PS # Github location of the course
     branch:            master
-    website-repo:      cpp-526-fall-2019
-    course-repo:       cpp-526-fall-2019
+    website-repo:      cpp-526-spr-2020
+    course-repo:       cpp-526-spr-2020
 
 # Author settings, displayed on post and doc pages if front matter references author name e.g. author: peter
 authors:
