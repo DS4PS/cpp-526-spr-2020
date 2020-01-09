@@ -53,7 +53,7 @@ textbooks:
   edition: Free Online
   link: https://leanpub.com/artofdatascience
   required: Not Required
-- title: Fundamentals of Data Visualization: A Primer on Making Informative and Compelling Figures 
+- title: 'Fundamentals of Data Visualization: A Primer on Making Informative and Compelling Figures' 
   authors: C.O. Wilke 
   edition: Free Online 
   link: https://serialmentor.com/dataviz/
