@@ -14,27 +14,27 @@ info:
  course_number: CPP 526 
  course_level: Graduate 
  course_website: 'https://canvas.asu.edu/courses/29528'
- course_start_end_dates: Aug 22 to Oct 11, 2019  
+ course_start_end_dates: Jan 13th to March 02, 2020
  course_prerequisites:  
  class_meets_when:  Asynchronous  
  class_meets_where:  'https://asu.zoom.us/j/944016877'
  review_sessions_when: TBD 
- review_sessions_where: UCENT Policy Analytics Lab 4th Floor + Zoom
- discussion_board_url: 'https://ds4ps.org/cpp-526-fall-2019/help/'
+ review_sessions_where: Zoom
+ discussion_board_url: 'https://ds4ps.org/cpp-526-spr-2020/help/'
 
 instructor:
--  name: Jesse Lecy, PhD
-   title: Professor
-   email: jdlecy@asu.edu
-   office_location: UCENT 517
-   website_url: www.lecy.info
-   github_url: 'https://github.com/lecy' 
+-  name: Jamison Crawford
+   title: Instructor 
+   email: 
+   office_location: 
+   website_url: https://rpubs.com/JamisonCrawford
+   github_url: 'https://github.com/JamisonCrawford' 
    twitter_url: 
-   scholar_url: 'https://scholar.google.com/citations?user=Ir8H4wMAAAAJ&hl=en'
+   scholar_url: 
    linked_in_url:
    office_hours_time: Flexible
-   office_hours_location:  Zoom or Office
-   office_hours_app_url:  'https://calendly.com/lecy/15min'
+   office_hours_location:  Zoom
+   office_hours_app_url:  
    
 
 textbooks:
