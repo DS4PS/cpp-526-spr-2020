@@ -23,7 +23,7 @@ Unit Metadata is comprised of:
 @foldout - activate unit content (allow foldout)
 Submit Buttons - 
   <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
-  <a class="uk-button uk-button-primary" href="{{page.canvas.yellowdig_url}}">Post to Yellowdig</a>
+  <a class="uk-button uk-button-primary" href="{{page.canvas.yellowdig_url}}">YELLOWDIG</a>
 -->
 
 
@@ -470,7 +470,7 @@ Take note, this assignment asks you to explore a new community where the technic
 
 
 
-<a class="uk-button uk-button-primary" href="https://www.yellowdig.com/board/40500">YELLOWDIG</a>
+<a class="uk-button uk-button-primary" href="{{page.canvas.yellowdig_url}}">YELLOWDIG</a>
 
 <br>
 <br>
@@ -626,6 +626,8 @@ For example, I might say that I work creating budgets for a government organizat
 
 You will find sites like the [R Graphs Gallery](https://www.r-graph-gallery.com/) and [The Data Viz Project](https://datavizproject.com/) helpful.
 
+<a class="uk-button uk-button-primary" href="{{page.canvas.yellowdig_url}}">YELLOWDIG</a>
+
 <br>
 <br>
 
@@ -737,6 +739,7 @@ Find a graph that violates one of these principles, or commits an equally egregi
 
 This use of [clowns](https://peltiertech.com/bad-bar-chart-practices-or-send-in-the-clowns/) in bar charts is one of my favorites. You might also enjoy [pizza charts](http://getdolphins.com/blog/the-worst-graphs-of-2017/) or [these gems](https://www.distractify.com/humor/2017/05/26/cszBB/hilariously-bad-graphs). 
 
+<a class="uk-button uk-button-primary" href="{{page.canvas.yellowdig_url}}">YELLOWDIG</a>
 
 <br>
 <br>
@@ -864,6 +867,8 @@ For the discussion topic this week find an example of an API that could be usefu
 You can find APIs through a Google search, or browse datasets on the [DS4PS Open Data](https://ds4ps.org/data/) page. Altnernatively, you can report on a package in R that uses a data API and describe what kinds of data the package allows you to access. 
 
 *Note, you do not have to show how to use the API for the post, just identify what information is accessible and how it might be used.* 
+
+<a class="uk-button uk-button-primary" href="{{page.canvas.yellowdig_url}}">YELLOWDIG</a>
 
 <br>
 <br>
@@ -1000,9 +1005,13 @@ For this week, read about how [GitHub has evolved to support government](https:/
 
 Do you think open source frameworks would help open the black box and make government more accessible? Would government become more accessible, or alienate regular citizens that are not computer scientists? Would it make influence from special interests more transparent, or would it make it easier for them to hijack the process of shaping local laws? 
 
-<a class="uk-button uk-button-primary" href="https://www.yellowdig.com/board/40500">YELLOWDIG</a>
+<a class="uk-button uk-button-primary" href="{{page.canvas.yellowdig_url}}">YELLOWDIG</a>
+
 
 <br><br>
+
+
+
 
 
 *** { @unit = "FRI Oct 4th", @title = "Lab 06", @assignment, @foldout  }
@@ -1060,8 +1069,7 @@ If you send me your RMD and HTML files via email, I will post them to GitHub and
 
 ## Post on Yellowdig
 
-<a class="uk-button uk-button-primary" href="https://www.yellowdig.com/board/40500">Yellowdig</a>
-
+<a class="uk-button uk-button-primary" href="{{page.canvas.yellowdig_url}}">YELLOWDIG</a>
 
 <br>
 <br>
