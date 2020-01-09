@@ -4,6 +4,7 @@ title: Schedule
 
 canvas: 
   assignment_url: 'https://canvas.asu.edu/courses/41578/assignments'
+  yellowdig_url: 'https://www.yellowdig.com/board/43114'
 ---
  
 <!--- 
@@ -20,7 +21,9 @@ Unit Metadata is comprised of:
 @assignment - turn on lecture icon
 @lecture - turn on lecture icon
 @foldout - activate unit content (allow foldout)
-Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
+Submit Buttons - 
+  <a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">Submit Lab</a>
+  <a class="uk-button uk-button-primary" href="{{page.canvas.yellowdig_url}}">Post to Yellowdig</a>
 -->
 
 
@@ -143,6 +146,8 @@ You will have plenty of practice with these tools this semester. You will submit
 
 *** { @unit = "WED Jan 15", @title = "Introduce Yourself", @assignment, @foldout   }
 
+<br>
+
 ## Introduce yourself to the class
 
 We will be using a discussion board called YellowDig for this course. Introduce yourself to the class and share a bit about:
@@ -153,6 +158,8 @@ We will be using a discussion board called YellowDig for this course. Introduce 
 
 <a class="uk-button uk-button-default" href="https://canvas.asu.edu/courses/41578/assignments/959542">Post to YellowDig</a>
 
+<br>
+<br>
 
 
 
@@ -286,7 +293,9 @@ So ignoring potential problems with big and open data for now, read about two in
 
 > For your discussion topic this week, find one data-driven blog post from Ben Wellington's [I Quant NY](http://iquantny.tumblr.com/) and/or OK Cupid's [OK Trends](https://theblog.okcupid.com/tagged/data) where you discovered something cool that you did not know, and share it with the group. In your post highlight what is interesting about the example, and what data made it possible.
 
-**Please post your reflection as a new pin on [YellowDig](https://canvas.asu.edu/courses/29528/assignments/656491).**
+**Please post your reflection as a new pin on YellowDig.**
+
+<a class="uk-button uk-button-primary" href="{{page.canvas.yellowdig_url}}">Post to Yellowdig</a>
 
 <br>
 
@@ -296,19 +305,20 @@ You can also check out Ben's [Ted Talk](https://www.youtube.com/watch?v=6xsvGYIx
 
 <br>
 
-**ASSIGNMENT:** 
+**NOTE:** 
 
 You get points on Yellowdig by interacting with content. That means creating new posts and participating in posts that your classmates create. Your Yellowdig posts are due on Friday, but you gain points throughout the week by participating in discussions. 
 
 You can earn up to 20 points a week, and points reset on Fridays. You need to earn 100 points throughout the seven-week term, which means averaging 15 points a week. 
+
+<br>
+<br>
 
 
 
 
 *** { @unit = "Due Jan 13th", @title = "Lab 01", @assignment, @foldout  }
 
-
-<br>
 <br>
 
 ## Lab-01 - Practice with Vectors
