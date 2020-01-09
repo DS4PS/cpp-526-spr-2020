@@ -92,7 +92,7 @@ And the dashboard example in R can be found here:
 
 
 
-*** { @unit = "", @title = "The R Toolkit", @lecture, @foldout }
+*** { @unit = "", @title = "The R Toolkit", @reading, @foldout }
 
 
 ## Introducing R 
