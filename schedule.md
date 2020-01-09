@@ -144,7 +144,7 @@ You will have plenty of practice with these tools this semester. You will submit
 
 
 
-*** { @unit = "WED Jan 15", @title = "Introduce Yourself", @assignment, @foldout   }
+*** { @unit = "Due Jan 15", @title = "Introduce Yourself", @assignment, @foldout   }
 
 <br>
 
