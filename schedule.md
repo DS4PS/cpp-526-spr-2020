@@ -3,7 +3,7 @@ layout: schedule
 title: Schedule
 
 canvas: 
-  assignment_url: 'https://canvas.asu.edu/courses/29528/assignments'
+  assignment_url: 'https://canvas.asu.edu/courses/41578/assignments'
 ---
  
 <!--- 
@@ -27,6 +27,65 @@ Submit Button - <a class="uk-button uk-button-primary" href="{{page.canvas.assig
 
 
 ** Welcome
+
+
+*** { @unit = "", @title = "PROGRAM ORIENTATION", @lecture, @foldout   }
+
+
+## Welcome !
+
+R is a foundational tool within a toolkit that I will refer to as the "data science ecosystem". 
+
+The orientation video below provides a brief introduction to the "ecosystem" - the community of people that are creating cool analytical tools and building tutorials and case studies for how they might be applied, as well as a core set of tools that are all designed to work nicely together in order to implement projects. 
+
+You can think of R, R Studio, and Markdown kindof like Excel (analysis), Word (report-writing), and Power Point (presentations). R allows you to analyze your data, but these results are not useful unless you can share them with others. Here is where [data-driven documents](http://ds4ps.org/dp4ss-textbook/ch-030-data-driven-docs.html) developed using R Studio and Markdown really shine. You can quickly package your R code as cool reports, websites, presentations, or dashboards to format the information in whatever way is most accessible and useful for your clients or stakeholders. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oC1xz97aoYI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Getting Help
+
+Nerds are stereotypically perceived as being hermetic, but in reality they have just created their own universes and civilizations. Surprisingly coding is a very social activity, and real-world analytics projects are almost always collaborative. You will learn how to use discussion boards to accelerate learning and facilitate collaboration, and social coding tools like GitHub to manage large data project. 
+
+We are going to throw a lot at you, but also provide a lot of support. Over these first couple of weeks feel free to reach out for anything you might need. 
+
+If you find something confusing let me know (likely others will as well). 
+
+* We can jump on a [Zoom call](https://calendly.com/lecy/15min?month=2019-08) to do a screen share if you want to walk through anything.   
+* You can post a question to the homework discussion board for [data science I](https://ds4ps.org/cpp-526-spr-2020/help/) or [program evaluation I](https://ds4ps.org/cpp-523-spr-2020/help/).  
+* And you can join review sessions each week.  
+
+Reach out if you have questions or feel stuck! 
+
+## References
+
+[Course Overview Powerpoint for Zoom Call](https://github.com/DS4PS/dp4ss-textbook/raw/master/resources/Couse-Overview.pdf)
+
+The course shells for CPP 523 and CPP 526 are located at:
+
+[https://ds4ps.org/cpp-526-spr-2020/](https://ds4ps.org/cpp-526-spr-2020/)  
+[https://ds4ps.org/cpp-523-spr-2020/](https://ds4ps.org/cpp-523-spr-2020/)  
+
+The *unofficial* program website can be found at:
+
+[https://ds4ps.org/ms-prog-eval-data-analytics/](https://ds4ps.org/ms-prog-eval-data-analytics/)
+
+And the dashboard example in R can be found here:
+
+[R Storyboard Example](https://beta.rstudioconnect.com/jjallaire/htmlwidgets-showcase-storyboard/htmlwidgets-showcase-storyboard.html)
+
+
+
+
+
+*** { @unit = "", @title = "Your Course Prep Checklist", @reading, @foldout }
+
+
+- [ ] [Read the Syllabus](https://ds4ps.org/cpp-526-spr-2020/) 
+- [ ] [Install R](https://cran.rstudio.com/) and [R Studio Desktop](https://www.rstudio.com/products/rstudio/download/) 
+- [ ] [Sign-Up for a GitHub Account](https://github.com/join) 
+- [ ] Introduce Yourself on [YellowDig](https://canvas.asu.edu/courses/41578/assignments/959542) (see below)
+
+
 
 
 
@@ -66,6 +125,8 @@ In this course we cover the foundations of data programming with the R language.
 <br>
 
 
+
+
 ## R Markdown
 
 [Getting Started with R Markdown](https://rmarkdown.rstudio.com/lesson-1.html)
@@ -78,18 +139,9 @@ You will have plenty of practice with these tools this semester. You will submit
 <br>
 
 
-*** { @unit = "Aug 23", @title = "Your Course Prep Checklist", @assignment, @foldout }
 
 
-- [ ] [Read the Syllabus](https://ds4ps.org/cpp-526-fall-2019/) 
-- [ ] [Install R](https://cran.rstudio.com/) and [R Studio Desktop](https://www.rstudio.com/products/rstudio/download/) 
-- [ ] [Sign-Up for a GitHub Account](https://github.com/join) 
-- [ ] Fill out the [doodle poll](https://doodle.com/poll/x8fdtsnyi6d54xpg) for review session times 
-- [ ] Introduce Yourself on [YellowDig](https://canvas.asu.edu/courses/29528/assignments/656491) (see below)
-
-
-
-*** { @unit = "Aug 23", @title = "Introduce Yourself", @assignment, @foldout   }
+*** { @unit = "WED Jan 15", @title = "Introduce Yourself", @assignment, @foldout   }
 
 ## Introduce yourself to the class
 
@@ -99,53 +151,10 @@ We will be using a discussion board called YellowDig for this course. Introduce 
 2. Your previous experience with data analytics 
 3. One thing you hope to do with your new skills in data analytics 
 
-<a class="uk-button uk-button-default" href="https://canvas.asu.edu/courses/29528/assignments/656491">Post to YellowDig</a>
+<a class="uk-button uk-button-default" href="https://canvas.asu.edu/courses/41578/assignments/959542">Post to YellowDig</a>
 
 
 
-*** { @unit = "", @title = "ORIENTATION", @lecture, @foldout   }
-
-
-## Welcome !
-
-R is a foundational tool within a toolkit that I will refer to as the "data science ecosystem". 
-
-If you were not able to make either Zoom session, I did a brief introduction to the "ecosystem" - the community of people that are creating cool analytical tools and building tutorials and case studies for how they might be applied, as well as a core set of tools that are all designed to work nicely together in order to implement projects. 
-
-You can think of R, R Studio, and Markdown kindof like Excel (analysis), Word (report-writing), and Power Point (presentations). R allows you to analyze your data, but these results are not useful unless you can share them with others. Here is where [data-driven documents](http://ds4ps.org/dp4ss-textbook/ch-030-data-driven-docs.html) developed using R Studio and Markdown really shine. You can quickly package your R code as cool reports, websites, presentations, or dashboards to format the information in whatever way is most accessible and useful for your clients or stakeholders. 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oC1xz97aoYI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-## Getting Help
-
-Nerds are stereotypically perceived as being hermetic, but in reality they have just created their own universes and civilizations. Surprisingly coding is a very social activity, and real-world analytics projects are almost always collaborative. You will learn how to use discussion boards to accelerate learning and facilitate collaboration, and social coding tools like GitHub to manage large data project. 
-
-We are going to throw a lot at you, but also provide a lot of support. Over these first couple of weeks feel free to reach out for anything you might need. 
-
-If you find something confusing let me know (likely others will as well). 
-
-* We can jump on a [Zoom call](https://calendly.com/lecy/15min?month=2019-08) to do a screen share if you want to walk through anything.   
-* You can post a question to the homework discussion board for [data science I](https://ds4ps.org/cpp-526-fall-2019/help/) or [program evaluation I](https://ds4ps.org/cpp-523-fall-2019/help/).  
-* And you can join review sessions each week.  
-
-Reach out if you have questions or feel stuck! 
-
-## References
-
-[Course Overview Powerpoint for Zoom Call](https://github.com/DS4PS/dp4ss-textbook/raw/master/resources/Couse-Overview.pdf)
-
-The course shells for CPP 523 and CPP 526 are located at:
-
-[https://ds4ps.org/cpp-526-fall-2019/](https://ds4ps.org/cpp-526-fall-2019/)  
-[https://ds4ps.org/cpp-523-fall-2019/](https://ds4ps.org/cpp-523-fall-2019/)  
-
-The *unofficial* program website can be found at:
-
-[https://ds4ps.org/ms-prog-eval-data-analytics/](https://ds4ps.org/ms-prog-eval-data-analytics/)
-
-And the dashboard example in R can be found here:
-
-[R Storyboard Example](https://beta.rstudioconnect.com/jjallaire/htmlwidgets-showcase-storyboard/htmlwidgets-showcase-storyboard.html)
 
 
 
@@ -169,31 +178,6 @@ Once you have completed this section you will be able to
   - numeric vectors 
   - character vectors 
   - logical vectors 
-
-## Assigned Reading
-
-Required:
-
-[Assignment](http://ds4ps.org/dp4ss-textbook/ch-033-calculator.html)
-
-[Functions](http://ds4ps.org/dp4ss-textbook/ch-040-functions.html)
-
-[Vectors](http://ds4ps.org/dp4ss-textbook/ch-050-vectors.html)
-
-Background Chapters:
-
-**You will start simple and get practice with these tools on labs. Skim these, then return for reference as you get stuck or want to deepend your knowledge.**
-
-[Learning to Learn R](http://ds4ps.org/dp4ss-textbook/ch-032-learning_r.html)
-
-[Core R](http://ds4ps.org/dp4ss-textbook/ch-010-core-r.html)
-
-[R Studio](http://ds4ps.org/dp4ss-textbook/ch-020-rstudio.html)
-
-[Data-Driven Docs](http://ds4ps.org/dp4ss-textbook/ch-030-data-driven-docs.html)
-
-[Markdown](http://ds4ps.org/dp4ss-textbook/ch-031-markdown.html)
-
 
 
 
@@ -238,10 +222,50 @@ head( dat )
 
 ![](https://github.com/DS4PS/dp4ss-textbook/blob/master/figures/syracus-parcels.png?raw=true)
 
+<br>
+<br>
 
 
 
-*** { @unit = "Due Aug 26th", @title = "Discussion Topic: The Promise of Big and Open Data", @assignment, @foldout  }
+
+*** { @unit = "", @title = "Readings", @reading, @foldout  }
+
+<br>
+<br>
+
+## Assigned Reading
+
+Required:
+
+[Assignment](http://ds4ps.org/dp4ss-textbook/ch-033-calculator.html)
+
+[Functions](http://ds4ps.org/dp4ss-textbook/ch-040-functions.html)
+
+[Vectors](http://ds4ps.org/dp4ss-textbook/ch-050-vectors.html)
+
+Background Chapters:
+
+**You will start simple and get practice with these tools on labs. Skim these, then return for reference as you get stuck or want to deepend your knowledge.**
+
+[Learning to Learn R](http://ds4ps.org/dp4ss-textbook/ch-032-learning_r.html)
+
+[Core R](http://ds4ps.org/dp4ss-textbook/ch-010-core-r.html)
+
+[R Studio](http://ds4ps.org/dp4ss-textbook/ch-020-rstudio.html)
+
+[Data-Driven Docs](http://ds4ps.org/dp4ss-textbook/ch-030-data-driven-docs.html)
+
+[Markdown](http://ds4ps.org/dp4ss-textbook/ch-031-markdown.html)
+
+
+<br>
+<br>
+
+
+
+
+
+*** { @unit = "Due Jan 13th", @title = "Discussion Topic: The Promise of Big and Open Data", @assignment, @foldout  }
 
 ## The Promise of Big, Open Data
 
@@ -272,9 +296,16 @@ You can also check out Ben's [Ted Talk](https://www.youtube.com/watch?v=6xsvGYIx
 
 <br>
 
+**ASSIGNMENT:** 
+
+You get points on Yellowdig by interacting with content. That means creating new posts and participating in posts that your classmates create. Your Yellowdig posts are due on Friday, but you gain points throughout the week by participating in discussions. 
+
+You can earn up to 20 points a week, and points reset on Fridays. You need to earn 100 points throughout the seven-week term, which means averaging 15 points a week. 
 
 
-*** { @unit = "Due Aug 29th", @title = "Lab 01", @assignment, @foldout  }
+
+
+*** { @unit = "Due Jan 13th", @title = "Lab 01", @assignment, @foldout  }
 
 
 <br>
@@ -282,7 +313,7 @@ You can also check out Ben's [Ted Talk](https://www.youtube.com/watch?v=6xsvGYIx
 
 ## Lab-01 - Practice with Vectors
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-fall-2019/labs/lab-01-instructions.html">LAB-01 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/labs/lab-01-instructions.html">LAB-01 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
@@ -364,13 +395,13 @@ Required:
 [Group Construction with Logical Statements](http://ds4ps.org/dp4ss-textbook/p-050-business-logic.html)
 
 
-
 ## Lab 
 
 Lab-02 covers the following topics:
 
 * Logical operators
 * Group construction 
+* Descriptive statistics 
 
 <br>
 <br>
@@ -378,7 +409,24 @@ Lab-02 covers the following topics:
 
 
 
-*** { @unit = "Due Sept 2nd", @title = "Discussion Topic: A Tour of R Packages", @assignment, @foldout  }
+*** { @unit = "", @title = "Readings", @reading, @foldout }
+
+<br>
+<br>
+
+## Assigned Reading
+
+Required:
+
+[Group Construction with Logical Statements](http://ds4ps.org/dp4ss-textbook/p-050-business-logic.html)
+
+<br>
+<br>
+
+
+
+
+*** { @unit = "FRI Jan 24th", @title = "Discussion Topic: A Tour of R Packages", @assignment, @foldout  }
 
 <br>
 
@@ -421,7 +469,7 @@ Take note, this assignment asks you to explore a new community where the technic
 
 
 
-*** { @unit = "Due Sept 5th", @title = "Lab 02", @assignment, @foldout }
+*** { @unit = "TUES Jan 28th", @title = "Lab 02", @assignment, @foldout }
 
 <br>
 <br>
@@ -440,7 +488,7 @@ Read the following sections from the [course chapter on groups](http://ds4ps.org
 
 The rest of the chapter is useful information to come back to, but not needed for the lab. Similar to last week the chapter will highlight some easy ways to make errors with your code, not to convince you that R is hard, but rather to ensure you are paying attention to some subtle features of computer languages that can impact your data. 
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-fall-2019/LABS/lab-02-instructions.html">LAB-02 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/lab-02-instructions.html">LAB-02 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
@@ -588,7 +636,7 @@ You are advised to **skim** the chapters on graphing functions and custom graphi
 [The plot() Function](http://ds4ps.org/dp4ss-textbook/p-061-plot-basics.html)  
 [Building Custom Graphics](http://ds4ps.org/dp4ss-textbook/p-062-customized-graphics.html)
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-fall-2019/LABS/lab-03-instructions.html">LAB-03 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/lab-03-instructions.html">LAB-03 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
@@ -634,7 +682,7 @@ By the end of this unit you will be able to:
 
 Read the notes on using R Shiny **widgets** and **render** functions to accept user input (widgets), and change graphics in response (render).  
 
-* [Notes on R Shiny](https://github.com/DS4PS/cpp-526-fall-2019/raw/master/lectures/shiny-widgets.pdf)  
+* [Notes on R Shiny](https://github.com/DS4PS/cpp-526-spr-2020/raw/master/lectures/shiny-widgets.pdf)  
 * [Example of a Dynamic Graph](https://shiny.rstudio.com/gallery/kmeans-example.html)  
 * [Widgets Gallery](https://shiny.rstudio.com/gallery/widget-gallery.html)   
 
@@ -711,7 +759,7 @@ For more widget examples visit the [R Shiny Widget Gallery](https://shiny.rstudi
 
 This lab is designed to introduce you to R Shiny functions by adding a dynamic element to the NYT graphic from last week.
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-fall-2019/LABS/lab-04-instructions.html">LAB-04 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/lab-04-instructions.html">LAB-04 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
@@ -823,7 +871,7 @@ This lab offers practice analyzing traffic accident patterns using **dplyr** dat
 
 *Note, this data will be used for your final dashboard. This assignment is a preview of the types of analysis and graphics you might report on the dashboard.*
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-fall-2019/LABS/lab-05-instructions.html">LAB-05 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/lab-05-instructions.html">LAB-05 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
@@ -956,7 +1004,7 @@ Do you think open source frameworks would help open the black box and make gover
 
 This lab is designed to introduce you to primary data join functions in R.
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-fall-2019/LABS/lab-06-instructions.html">LAB-06 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/lab-06-instructions.html">LAB-06 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
@@ -994,7 +1042,7 @@ Since you are sharing your code-through with your classmates on Yellowdig, it wi
 
 If you send me your RMD and HTML files via email, I will post them to GitHub and create a link for you if you would like to share a URL instead of a file. 
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-fall-2019/LABS/code-through-assignment.html">Code-Through Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/code-through-assignment.html">Code-Through Instructions</a>
 
 ## Submit to Canvas:
 
@@ -1019,7 +1067,7 @@ If you send me your RMD and HTML files via email, I will post them to GitHub and
 
 Working with the crash data from Lab-05, you will extend the work you began in Lab-04 by creating a dynamic data dashboard that will be used to search for patterns in Tempe crash data.
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-fall-2019/LABS/final-project-instructions.html">Final Project Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/final-project-instructions.html">Final Project Instructions</a>
 
 ## Submit to Canvas:
 
