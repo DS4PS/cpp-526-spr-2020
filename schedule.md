@@ -272,7 +272,7 @@ Background Chapters:
 
 
 
-*** { @unit = "Due Jan 13th", @title = "Discussion Topic: The Promise of Big and Open Data", @assignment, @foldout  }
+*** { @unit = "Due Jan 17th", @title = "Discussion Topic: The Promise of Big and Open Data", @assignment, @foldout  }
 
 ## The Promise of Big, Open Data
 
@@ -317,7 +317,7 @@ You can earn up to 20 points a week, and points reset on Fridays. You need to ea
 
 
 
-*** { @unit = "Due Jan 13th", @title = "Lab 01", @assignment, @foldout  }
+*** { @unit = "Due Jan 21th", @title = "Lab 01", @assignment, @foldout  }
 
 <br>
 
@@ -605,7 +605,7 @@ The lab requires you to re-create a graph that was featured in the New York Time
 
 
 
-*** { @unit = "MON Sept 9th", @title = "Discussion Topic: Data Viz Packages", @assignment, @foldout  }
+*** { @unit = "FRI Jan 31st", @title = "Discussion Topic: Data Viz Packages", @assignment, @foldout  }
 
 <br>
 <br>
@@ -628,7 +628,7 @@ You will find sites like the [R Graphs Gallery](https://www.r-graph-gallery.com/
 
 
 
-*** { @unit = "SUN Sept 15th", @title = "Lab 03", @assignment, @foldout  }
+*** { @unit = "TUE Feb 4th", @title = "Lab 03", @assignment, @foldout  }
 
 <br>
 <br>
@@ -714,9 +714,21 @@ But we will now add an input widget that allows users to select one team that wi
 
 
 
+*** { @unit = "", @title = "Demo of Shiny Widgets", @foldout }
+
+<br>
+[Download Shiny Widgets Demo](https://cdn.rawgit.com/DS4PS/Data-Science-Class/53c986f1/TEMPLATES/ShinyWidgetsDemo.Rmd
+)
+
+For more widget examples visit the [R Shiny Widget Gallery](https://shiny.rstudio.com/gallery/widget-gallery.html) and the [R Shiny Gallery](https://shiny.rstudio.com/gallery/).  
+
+<br>
 
 
-*** { @unit = "MON Sept 16th", @title = "Discussion Topic", @assignment, @foldout  }
+
+
+
+*** { @unit = "FRI Feb 7th", @title = "Discussion Topic", @assignment, @foldout  }
 
 <br>
 <br>
@@ -742,21 +754,10 @@ This use of [clowns](https://peltiertech.com/bad-bar-chart-practices-or-send-in-
 
 
 
-*** { @unit = "", @title = "Demo of Shiny Widgets", @foldout }
-
-<br>
-[Download Shiny Widgets Demo](https://cdn.rawgit.com/DS4PS/Data-Science-Class/53c986f1/TEMPLATES/ShinyWidgetsDemo.Rmd
-)
-
-For more widget examples visit the [R Shiny Widget Gallery](https://shiny.rstudio.com/gallery/widget-gallery.html) and the [R Shiny Gallery](https://shiny.rstudio.com/gallery/).  
-
-<br>
 
 
 
-
-
-*** { @unit = "SUN Sept 22nd", @title = "Lab 04", @assignment, @foldout  }
+*** { @unit = "TUE Feb 11th", @title = "Lab 04", @assignment, @foldout  }
 
 
 <br>
@@ -833,7 +834,7 @@ Lab 05 will use data on traffic accidents in the City of Tempe:
 
 
 
-*** { @unit = "TUES Sept 24th", @title = "Discussion Topic Data APIs", @assignment, @foldout  }
+*** { @unit = "FRI Feb 14th", @title = "Discussion Topic Data APIs", @assignment, @foldout  }
 
 <br>
 <br>
@@ -869,7 +870,7 @@ You can find APIs through a Google search, or browse datasets on the [DS4PS Open
 
 
 
-*** { @unit = "SUN Sept 29th", @title = "Lab 05", @assignment, @foldout  }
+*** { @unit = "TUE Feb 18th", @title = "Lab 05", @assignment, @foldout  }
 
 <br>
 <br>
@@ -895,6 +896,7 @@ This lab offers practice analyzing traffic accident patterns using **dplyr** dat
 
 
 ** Week 6 - Data IO and Joins
+
 
 
 
@@ -945,7 +947,8 @@ We will join the Salaries table to player bios (Master table) and performance da
 
 
 
-*** { @unit = "MON Sept 30th", @title = "Discussion Topic", @assignment, @foldout  }
+
+*** { @unit = "FRI Feb 21st", @title = "Discussion Topic", @assignment, @foldout  }
 
 <br>
 
@@ -1008,7 +1011,10 @@ Do you think open source frameworks would help open the black box and make gover
 
 
 
-*** { @unit = "FRI Oct 4th", @title = "Lab 06", @assignment, @foldout  }
+
+
+
+*** { @unit = "TUE Feb 25th", @title = "Lab 06", @assignment, @foldout  }
 
 <br>
 <br>
@@ -1044,9 +1050,10 @@ This lab is designed to introduce you to primary data join functions in R.
 <br>
 
 
-*** { @unit = "FRI Oct 11th", @title = "Code-Through Assignment", @assignment, @foldout  }
 
-<br>
+
+*** { @unit = "MON Mar 2nd", @title = "Code-Through Assignment", @assignment, @foldout  }
+
 <br>
 
 ## Code-Through
@@ -1069,11 +1076,11 @@ If you send me your RMD and HTML files via email, I will post them to GitHub and
 <br>
 
 
-*** { @unit = "FRI Oct 11th", @title = "FINAL PROJECT", @assignment, @foldout  }
+
+
+*** { @unit = "MON Mar 2nd", @title = "FINAL PROJECT", @assignment, @foldout  }
 
 <br>
-<br>
-
 
 ## Create a Data Dashboard in R
 
@@ -1085,10 +1092,16 @@ Working with the crash data from Lab-05, you will extend the work you began in L
 
 <a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/29528/assignments/821740">SUBMIT DASHBOARD</a>
 
-*Please note that I will be traveling on Friday Oct 11th, so response to questions will be slow if you wait until Friday.*
+<br>
+<br>
 
-<br>
-<br>
+
+
+
+
+
+
+
 
 
 
