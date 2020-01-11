@@ -162,6 +162,71 @@ We will be using a discussion board called YellowDig for this course. Introduce 
 <br>
 
 
+*** { @unit = "", @title = "Getting Help", @assignment, @foldout  }
+
+
+## Getting Help
+
+Nerds are stereotypically perceived as being anti-social, but in reality data analytics is a very social activity and real-world analytics projects are almost always collaborative. 
+
+Learning how to seek help and use discussion boards will accelerate learning and facilitate collaboration. Social coding tools like GitHub use these features extensively. 
+
+We are going to throw a lot at you, but also provide a lot of support. Over these first couple of weeks feel free to reach out for anything you might need. 
+
+If you find something confusing let us know (likely others will find it confusing as well). 
+
+* We can jump on a [Zoom call](https://calendly.com/lecy/15min?month=2019-08) to do a screen share if you want to walk through anything. 
+* You can post a question to the homework discussion board for [data science I](https://ds4ps.org/cpp-526-spr-2020/help/) or [program evaluation I](https://ds4ps.org/cpp-523-spr-2020/help/).  
+* Or you can request a walk-through of a problem. The instructor will provide an example with the solution. 
+
+As a general rule of thumb, if you are stuck on the math or code for a problem, need clarification about what the question is asking, want to make sure you understand a formula, or are having similar issues then the help discussion page is the easiest and quickest way to get help. If you are confused about concepts or having a hard time even formulating your question then virtual office hours are your best option.
+
+Note that the discussion board is hosted by the GitHub issues feature. It is a great forum because:
+
+* You can format code and math using standard markdown syntax. 
+* You can cut and paste images directly into the message. 
+* You can direction responses using @username mentions. 
+
+Please preview your responses before posting to ensure proper formatting. Note that you format code by placing fences around the code:
+
+````
+```
+# your code here
+lm( y ~ x1 + x2 )
+```
+````
+
+The fences are three back-ticks. These look like quotation marks, but are actually the character at the top left of your keyboard (if you have a US or European keyboard). 
+
+GitHub does not have a native math rendering language (RMD documents, on the other hand, [support formulas](https://www.calvin.edu/~rpruim/courses/s341/S17/from-class/MathinRmd.html)). So you have two options, type formulas as regular text and use code formatting to make them clear (this option is usually sufficient). Or you can type your formula in a formula editor and copy and paste an image of the nicely-formatted example.  
+
+````
+```
+y = b0 + b1•X1 + b2•X2 + e
+
+b1 = cov(x,y) / var(x)
+```
+````
+
+----
+
+These courses are designed to be interactive, and a lot of learning occurs by practicing the technical jargon from the field and learning how to talk about data and models. 
+
+Please reach out if you have questions or feel stuck!  
+
+**PRACTICE:**
+
+Navigate to the [Help! Board](https://ds4ps.github.io/cpp-526-spr-2020/help/) for the course. Click on the **practice post**, and reply by telling the class your name and your favorite [**color in R**](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf). 
+
+<br>
+<br>
+
+
+
+
+
+
+
 
 
 
