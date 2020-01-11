@@ -327,7 +327,7 @@ You can earn up to 20 points a week, and points reset on Fridays. You need to ea
 
 ## Submit Solutions to Canvas:
 
-<a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/29528/assignments/750552">SUBMIT LAB-01</a>
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">SUBMIT LAB</a>
 
 <br>
 <br>
@@ -492,11 +492,11 @@ Read the following sections from the [course chapter on groups](http://ds4ps.org
 
 The rest of the chapter is useful information to come back to, but not needed for the lab. Similar to last week the chapter will highlight some easy ways to make errors with your code, not to convince you that R is hard, but rather to ensure you are paying attention to some subtle features of computer languages that can impact your data. 
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/lab-02-instructions.html">LAB-02 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/labs/lab-02-instructions.html">LAB-02 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
-<a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/29528/assignments/764453">SUBMIT LAB-02</a>
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">SUBMIT LAB</a>
 
 <br>
 <br>
@@ -642,11 +642,11 @@ You are advised to **skim** the chapters on graphing functions and custom graphi
 [The plot() Function](http://ds4ps.org/dp4ss-textbook/p-061-plot-basics.html)  
 [Building Custom Graphics](http://ds4ps.org/dp4ss-textbook/p-062-customized-graphics.html)
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/lab-03-instructions.html">LAB-03 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/labs/lab-03-instructions.html">LAB-03 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
-<a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/29528/assignments/775169">SUBMIT LAB-03</a>
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">SUBMIT LAB</a>
 
 <br>
 <br>
@@ -767,11 +767,11 @@ This use of [clowns](https://peltiertech.com/bad-bar-chart-practices-or-send-in-
 
 This lab is designed to introduce you to R Shiny functions by adding a dynamic element to the NYT graphic from last week.
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/lab-04-instructions.html">LAB-04 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/labs/lab-04-instructions.html">LAB-04 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
-<a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/29528/assignments/786492">SUBMIT LAB-04</a>
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">SUBMIT LAB</a>
 
 <br>
 <br>
@@ -881,11 +881,11 @@ This lab offers practice analyzing traffic accident patterns using **dplyr** dat
 
 *Note, this data will be used for your final dashboard. This assignment is a preview of the types of analysis and graphics you might report on the dashboard.*
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/lab-05-instructions.html">LAB-05 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/labs/lab-05-instructions.html">LAB-05 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
-<a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/29528/assignments/794992">SUBMIT LAB-05</a>
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">SUBMIT LAB</a>
 
 <br>
 <br>
@@ -1023,11 +1023,11 @@ Do you think open source frameworks would help open the black box and make gover
 
 This lab is designed to introduce you to primary data join functions in R.
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/lab-06-instructions.html">LAB-06 Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/labs/lab-06-instructions.html">LAB-06 Instructions</a>
 
 ## Submit Solutions to Canvas:
 
-<a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/29528/assignments/814525">SUBMIT LAB-06</a>
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">SUBMIT LAB</a>
 
 <br>
 <br>
@@ -1086,11 +1086,11 @@ If you send me your RMD and HTML files via email, I will post them to GitHub and
 
 Working with the crash data from Lab-05, you will extend the work you began in Lab-04 by creating a dynamic data dashboard that will be used to search for patterns in Tempe crash data.
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/final-project-instructions.html">Final Project Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/labs/final-project-instructions.html">Final Project Instructions</a>
 
 ## Submit to Canvas:
 
-<a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/29528/assignments/821740">SUBMIT DASHBOARD</a>
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">SUBMIT DASHBOARD</a>
 
 <br>
 <br>
