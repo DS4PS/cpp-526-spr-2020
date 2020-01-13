@@ -129,7 +129,26 @@ You will have plenty of practice with these tools this semester. You will submit
 <br>
 
 
-*** { @unit = "Due Jan 15", @title = "Introduce Yourself & Meet Your Instructor", @assignment, @lecture, @foldout }
+*** { @unit = "", @title = "Meet Your Instructor", @assignment, @foldout }
+
+<br>
+
+## A Little Bit About Me
+
+<br>
+<br>
+
+<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/wpguZgWcblE" 
+frameborder="0" allow="accelerometer; 
+autoplay; encrypted-media; gyroscope; 
+picture-in-picture" allowfullscreen></iframe>
+
+<br>
+<br>
+
+
+*** { @unit = "Due Jan 15", @title = "Introduce Yourself", @assignment, @foldout }
 
 <br>
 
@@ -142,22 +161,6 @@ We will be using a discussion board called YellowDig for this course. Introduce 
 3. One thing you hope to do with your new skills in data analytics 
 
 <a class="uk-button uk-button-default" href="https://canvas.asu.edu/courses/41578/assignments/959542">Post to YellowDig</a>
-
-<br>
-<br>
-
-
-## Meet Your Instructor
-
-<br>
-<br>
-
-<iframe width="560" height="315" 
-src="https://www.youtube.com/embed/wpguZgWcblE" 
-frameborder="0" allow="accelerometer; 
-autoplay; encrypted-media; gyroscope; 
-picture-in-picture" allowfullscreen></iframe>
-
 
 <br>
 <br>
