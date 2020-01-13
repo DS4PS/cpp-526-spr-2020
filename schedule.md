@@ -143,7 +143,25 @@ Use the bookmarks in the video description on YouTube to skip ahead to different
 src="https://www.youtube.com/watch?v=Qc7BNlozOcE" 
 frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; 
-picture-in-picture" allowfullscreen></iframe>
+picture-in-picture" allowfullscreen></iframe> 
+
+<br>
+
+**Content:**
+* Opening a New Script: 00:31
+* Saving Scripts: 01:35
+* Sessions & Setting Working Directories: 04:13
+* The Source/Script Pane: 06:15
+* The Console Pane: 09:12 
+* The Environment, History, & Connections Panes: 12:04 
+* Importing Data: 12:26 
+* Objects & the Environment Pane: 14:26 
+* The Files, Plots, Packages, Help Panes: 16:16 
+* The Help Pane: 18:04 
+* Keyboard Shortcuts: 23:48 
+* The RStudio Cheatsheet: 29:07 
+* Customizing Your Interface: 30:20 
+
 
 <br>
 <br>
@@ -166,8 +184,19 @@ frameborder="0" allow="accelerometer;
 autoplay; encrypted-media; gyroscope; 
 picture-in-picture" allowfullscreen></iframe>
 
+
+<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/Qc7BNlozOcE" 
+frameborder="0" allow="accelerometer; 
+autoplay; encrypted-media; gyroscope; 
+picture-in-picture" allowfullscreen></iframe>
+
+
 <br>
 <br>
+
+
+
 
 
 *** { @unit = "Due Jan 15", @title = "Introduce Yourself", @assignment, @foldout }
@@ -188,8 +217,10 @@ We will be using a discussion board called YellowDig for this course. Introduce 
 <br>
 
 
-*** { @unit = "", @title = "Getting Help", @assignment, @foldout  }
 
+
+
+*** { @unit = "", @title = "Getting Help", @assignment, @foldout  }
 
 ## Getting Help
 
@@ -246,6 +277,10 @@ Navigate to the [Help! Board](https://ds4ps.github.io/cpp-526-spr-2020/help/) fo
 
 <br>
 <br>
+
+
+
+
 
 
 
