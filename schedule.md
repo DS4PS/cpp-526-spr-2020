@@ -67,7 +67,7 @@ And the dashboard example in R can be found here:
 
 
 
-*** { @unit = "", @title = "Your Course Prep Checklist", @reading, @lecture, @foldout }
+*** { @unit = "", @title = "Your Course Prep Checklist", @reading, @foldout }
 
 
 - [ ] [Read the Syllabus](https://ds4ps.org/cpp-526-spr-2020/) 
