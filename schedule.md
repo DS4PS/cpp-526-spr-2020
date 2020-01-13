@@ -114,9 +114,6 @@ In this course we cover the foundations of data programming with the R language.
 <br>
 <br>
 
-
-
-
 ## R Markdown
 
 [Getting Started with R Markdown](https://rmarkdown.rstudio.com/lesson-1.html)
@@ -125,10 +122,16 @@ You will have plenty of practice with these tools this semester. You will submit
 
 [![](https://github.com/DS4PS/ds4ps.github.io/blob/master/gifs/NewCodeChunk/NewCodeChunk_media/NewCodeChunk.gif?raw=true)](../gifs/NewCodeChunk/NewCodeChunk.html)
 
+
 <br>
 <br>
 
 
+
+
+*** { @unit = "", @title = "Tour of R Studio", @lecture, @foldout }
+
+<br>
 
 ## Getting to Know RStudio
 
@@ -138,13 +141,13 @@ Use the bookmarks in the video description on YouTube to skip ahead to different
 
 <br>
 <br>
-
-<iframe width="560" height="315" 
+ 
+<iframe width="560" height="315"  
 src="https://www.youtube.com/watch?v=Qc7BNlozOcE" 
 frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; 
 picture-in-picture" allowfullscreen></iframe> 
-
+ 
 <br>
 
 **Content:**
@@ -165,6 +168,9 @@ picture-in-picture" allowfullscreen></iframe>
 
 <br>
 <br>
+
+
+
 
 
 *** { @unit = "", @title = "Meet Your Instructor", @lecture, @foldout }
