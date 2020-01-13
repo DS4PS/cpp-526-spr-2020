@@ -129,7 +129,7 @@ You will have plenty of practice with these tools this semester. You will submit
 <br>
 
 
-*** { @unit = "", @title = "Meet Your Instructor", @assignment, @foldout }
+*** { @unit = "", @title = "Meet Your Instructor", @lecture, @foldout }
 
 <br>
 
