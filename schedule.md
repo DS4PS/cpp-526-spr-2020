@@ -133,7 +133,9 @@ You will have plenty of practice with these tools this semester. You will submit
 
 <br>
 
-## A Little Bit About Me
+## Introduction
+
+Play the video below to learn a bit more about Jamison Crawford, Associate Faculty member at Arizona State University and instructor for Foundations of Data Science I.
 
 <br>
 <br>
