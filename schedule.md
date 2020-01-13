@@ -67,7 +67,7 @@ And the dashboard example in R can be found here:
 
 
 
-*** { @unit = "", @title = "Your Course Prep Checklist", @reading, @foldout }
+*** { @unit = "", @title = "Your Course Prep Checklist", @reading, @lecture, @foldout }
 
 
 - [ ] [Read the Syllabus](https://ds4ps.org/cpp-526-spr-2020/) 
@@ -124,6 +124,26 @@ In this course we cover the foundations of data programming with the R language.
 You will have plenty of practice with these tools this semester. You will submit your labs as knitted R Markdown (RMD) files.
 
 [![](https://github.com/DS4PS/ds4ps.github.io/blob/master/gifs/NewCodeChunk/NewCodeChunk_media/NewCodeChunk.gif?raw=true)](../gifs/NewCodeChunk/NewCodeChunk.html)
+
+<br>
+<br>
+
+
+
+## Getting to Know RStudio
+
+RStudio is a graphical user interface (GUI) and integrated developer environment (IDE) that makes it much easier to use R for writing code, importing and exporting data, installing extensions, and many other features.
+
+Use the bookmarks in the video description on YouTube to skip ahead to different parts of the tutorial. 
+
+<br>
+<br>
+
+<iframe width="560" height="315" 
+src="https://www.youtube.com/watch?v=Qc7BNlozOcE" 
+frameborder="0" allow="accelerometer; 
+autoplay; encrypted-media; gyroscope; 
+picture-in-picture" allowfullscreen></iframe>
 
 <br>
 <br>
