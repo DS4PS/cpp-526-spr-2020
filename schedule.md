@@ -198,7 +198,7 @@ RStudio is a graphical user interface (GUI) and integrated developer environment
 #### [R Studio Walk-Through](https://www.youtube.com/watch?v=Qc7BNlozOcE)
  
 <iframe width="560" height="315" 
-src="https://www.youtube.com/watch?v=Qc7BNlozOcE" 
+src="https://www.youtube.com/embed/Qc7BNlozOcE?controls=0&amp;start=35" 
 frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; 
 picture-in-picture" allowfullscreen></iframe>
