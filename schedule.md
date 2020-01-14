@@ -64,23 +64,79 @@ And the dashboard example in R can be found here:
 [R Storyboard Example](https://beta.rstudioconnect.com/jjallaire/htmlwidgets-showcase-storyboard/htmlwidgets-showcase-storyboard.html)
 
 
+<br>
+<br>
+
+
+*** { @unit = "", @title = "Meet Your Instructor", @lecture, @foldout }
+
+<br>
+
+## Introduction
+
+Play the video below to learn a bit more about Jamison Crawford, Associate Faculty member at Arizona State University and your instructor for Foundations of Data Science: Part I.
+
+<br>
+<br>
+
+<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/wpguZgWcblE" 
+frameborder="0" allow="accelerometer; 
+autoplay; encrypted-media; gyroscope; 
+picture-in-picture" allowfullscreen></iframe>
+
+
+<br>
+<br>
+
+
+
+
+
+*** { @unit = "Due Jan 15", @title = "Introduce Yourself", @assignment, @foldout }
+
+<br>
+
+## Introduce yourself to the class
+
+We will be using a discussion board called YellowDig for this course. Introduce yourself to the class and share a bit about:
+
+1. A little about yourself
+2. Your previous experience with data analytics 
+3. One thing you hope to do with your new skills in data analytics 
+
+<a class="uk-button uk-button-default" href="https://canvas.asu.edu/courses/41578/assignments/959542">Post to YellowDig</a>
+
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+** Getting Started
 
 
 
 *** { @unit = "", @title = "Your Course Prep Checklist", @reading, @foldout }
 
+<br>
 
 - [ ] [Read the Syllabus](https://ds4ps.org/cpp-526-spr-2020/) 
 - [ ] [Install R](https://cran.rstudio.com/) and [R Studio Desktop](https://www.rstudio.com/products/rstudio/download/) 
 - [ ] [Sign-Up for a GitHub Account](https://github.com/join) 
 - [ ] Introduce Yourself on [YellowDig](https://canvas.asu.edu/courses/41578/assignments/959542) (see below)
 
+<br>
 
 
 
 
 *** { @unit = "", @title = "The R Toolkit", @reading, @foldout }
-
 
 ## Introducing R 
 
@@ -171,51 +227,6 @@ Use the bookmarks in the video description on YouTube to skip ahead to different
 <br>
 <br>
 
-
-
-
-
-*** { @unit = "", @title = "Meet Your Instructor", @lecture, @foldout }
-
-<br>
-
-## Introduction
-
-Play the video below to learn a bit more about Jamison Crawford, Associate Faculty member at Arizona State University and your instructor for Foundations of Data Science: Part I.
-
-<br>
-<br>
-
-<iframe width="560" height="315" 
-src="https://www.youtube.com/embed/wpguZgWcblE" 
-frameborder="0" allow="accelerometer; 
-autoplay; encrypted-media; gyroscope; 
-picture-in-picture" allowfullscreen></iframe>
-
-
-<br>
-<br>
-
-
-
-
-
-*** { @unit = "Due Jan 15", @title = "Introduce Yourself", @assignment, @foldout }
-
-<br>
-
-## Introduce yourself to the class
-
-We will be using a discussion board called YellowDig for this course. Introduce yourself to the class and share a bit about:
-
-1. A little about yourself
-2. Your previous experience with data analytics 
-3. One thing you hope to do with your new skills in data analytics 
-
-<a class="uk-button uk-button-default" href="https://canvas.asu.edu/courses/41578/assignments/959542">Post to YellowDig</a>
-
-<br>
-<br>
 
 
 
