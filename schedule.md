@@ -137,18 +137,19 @@ You will have plenty of practice with these tools this semester. You will submit
 
 RStudio is a graphical user interface (GUI) and integrated developer environment (IDE) that makes it much easier to use R for writing code, importing and exporting data, installing extensions, and many other features.
 
-Use the bookmarks in the video description on YouTube to skip ahead to different parts of the tutorial. 
-
-<br>
 <br>
  
-<iframe width="560" height="315"  
+ 
+<iframe width="560" height="315" 
 src="https://www.youtube.com/watch?v=Qc7BNlozOcE" 
 frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; 
-picture-in-picture" allowfullscreen></iframe> 
+picture-in-picture" allowfullscreen></iframe>
+ 
  
 <br>
+
+Use the bookmarks in the video description on YouTube to skip ahead to different parts of the tutorial. 
 
 **Content:**
 * Opening a New Script: 00:31
