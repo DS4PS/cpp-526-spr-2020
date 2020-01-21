@@ -1,19 +1,29 @@
 ---
-title: 'Lab 02 - Building Groups'
+title: 'Lab 02 - Selecting Groups Within Data'
 output:
   html_document:
     theme: readable
     df_print: paged
     highlight: tango
+    include:
+      after_body: footer.html    
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set( echo = TRUE, message=F, warning=F, fig.width=10, fig.height=12 )
 library( dplyr )
 library( pander )
+library( geojsonio )
+library( sp )
+library( rgdal )
+
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/downtown-syr.geojson"
+dt <- geojson_read( URL, what="sp" )
+par( mar=c(0,0,0,0) )
+plot( dt,  border=NA, col="gray80" )
 ```
 
-#### [CPP 526: Foundations of Data Science I](https://ds4ps.org/cpp-526-fall-2019/)
+#### [CPP 526: Foundations of Data Science I](https://ds4ps.org/cpp-526-spr-2020/)
 
 <br>
 
@@ -90,7 +100,7 @@ install.packages( "rgdal" )
 
 NOTE: do not include include install package commands in your RMD chunks. Trying to install packages while knitting can cause errors. 
 
-```{r}
+```{r, eval=F}
 library( geojsonio )
 library( sp )
 library( rgdal )
@@ -100,7 +110,7 @@ Load the map file:
 
 ```{r, cache=TRUE}
 URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.geojson"
-syr <- geojson_read( URL, method="local", what="sp" )
+syr <- geojson_read( URL, what="sp" )
 plot( syr,  border=NA, col="gray80" )
 ```
 
@@ -278,6 +288,19 @@ Your RMD file will not knit if you have errors in your code. If you get stuck on
 
 
 <br>
+
+--------
+
+<br>
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf2Q5We3GGMZYxjFeofevq27uJWbDDlXcQEARrXs-MaRt-h7w/viewform?embedded=true" 
+width="800" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+<br>
+
+--------
+
+
 <br>
 
 
@@ -291,4 +314,3 @@ blockquote {
     border-left: 5px solid lightgray;
 }
 </style>
-
