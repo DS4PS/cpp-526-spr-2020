@@ -89,6 +89,20 @@ ave.so <- Teams$SO / Teams$G  # average strike-outs per game each season
 year <- Teams$yearID
 ```
 
+It is advisable to keep all of the variables together inside of a data frame. Current **ave.so** is an active vector, but it is not in the same data frame as the other variables. 
+
+To create a new variable inside of an existing data frame try:
+
+`data.frame.name $ new.variable.name`
+
+For example:
+
+```{r}
+Teams$ave.so <- Teams$SO / Teams$G
+```
+
+Make a mental note of the difference, as some functions (especially the data wrangling functions in the **dplyr** package) will require that all variables are contained within a single data frame. 
+
 
 <br>
 
