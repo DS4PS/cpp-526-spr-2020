@@ -5,6 +5,8 @@ output:
     theme: readable
     df_print: paged
     highlight: tango
+    include:
+      after_body: footer.html
 ---
 
 ```{r setup, include=FALSE}
@@ -13,7 +15,7 @@ library( dplyr )
 library( pander )
 ```
 
-#### [CPP 526: Foundations of Data Science I](https://ds4ps.org/cpp-526-fall-2019/)
+#### [CPP 526: Foundations of Data Science I](https://ds4ps.org/cpp-526-spr-2020/)
 
 <br>
 
@@ -230,4 +232,20 @@ Remember to:
 
 <br>
 <br>
+<br>
+
+--------
+
+<br>
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf2Q5We3GGMZYxjFeofevq27uJWbDDlXcQEARrXs-MaRt-h7w/viewform?embedded=true" 
+width="800" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+
+--------
+
+
+<br>
+
+
 
