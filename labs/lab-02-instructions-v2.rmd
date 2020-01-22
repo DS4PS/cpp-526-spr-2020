@@ -325,15 +325,15 @@ plot( downtown,  border="gray70", col=group.colors,
 ```{r, echo=F, fig.width=10, fig.height=6, eval=T}
 par( mfrow=c(1,2), mar=c(0,0,2,0) )
 
+these <- downtown$yearbuilt > 1980                    
+group.colors <- ifelse( these, "steelblue", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Built After 1980")    
+
 these <- downtown$landuse == "Commercial"                      
 group.colors <- ifelse( these, "firebrick", "gray80" )    
 plot( downtown,  border="gray20", col=group.colors,
       main="Commercial Properties")          
-
-these <- downtown$yearbuilt > 1980                    
-group.colors <- ifelse( these, "steelblue", "gray80" )    
-plot( downtown,  border="gray20", col=group.colors,
-      main="Built After 1980")            
 ```
 
 
@@ -555,7 +555,7 @@ plot( downtown,  border="gray70", col=group.colors,
 <br>
 
 
-#### 7. How many of each land use type are delinquint on taxes? 
+#### 8. How many of each land use type are delinquint on taxes? 
 
 > **table()** with **amtdelinqt** and **landuse** variables
 > define delinquincy first, then create a table with
