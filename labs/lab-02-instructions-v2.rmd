@@ -5,6 +5,10 @@ output:
     theme: readable
     df_print: paged
     highlight: tango
+    toc: true
+    self_contained: false
+    number_sections: false
+    css: textbook.css
     include:
       after_body: footer.html    
 ---
@@ -16,12 +20,10 @@ library( pander )
 library( geojsonio )
 library( sp )
 library( rgdal )
-
-URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/downtown-syr.geojson"
-dt <- geojson_read( URL, what="sp" )
-par( mar=c(0,0,0,0) )
-plot( dt,  border=NA, col="gray80" )
 ```
+
+
+
 
 #### [CPP 526: Foundations of Data Science I](https://ds4ps.org/cpp-526-spr-2020/)
 
@@ -56,39 +58,108 @@ mean()       # proportion of TRUEs in logical vectors
 compound statements with & (AND) and | (OR) operators 
 ```
 
+
+
+
 <br><br>
 
 
 
 # Data
 
-This lab uses **city tax parcel data** from Syracuse, NY. [ [Data Dictionary](https://ds4ps.github.io/Data-Science-Class/DATA/syr_parcels.html) ]
+This lab uses **city tax parcel data** from Syracuse, NY. 
 
 * Each house, business, park or empty lot in the city sits on a parcel of land, and the tax rate for that parcel is determined by the city. 
 * All of the characteristics of each parcel is stored in a central database, along with information about the land use classifications, owners, and whether the property is up-to-date on taxes and water bills.  
 * Each row represents one tax parcel, and all tax parcels in the city are recorded in the dataset.  
 
-```{r, echo=F}
-URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
-dat <- read.csv( URL, stringsAsFactors=FALSE )
-head( dat, 10 ) # show first ten rows of data
+
+```{r, cache=T}
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.geojson"
+syr <- geojson_read( URL, what="sp" )
 ```
-
-<br>
-<br>
-
-
-## Loading Data Into R
-
-You can load the dataset by including the following code chunk in your file: 
 
 ```{r, eval=F}
-URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
-dat <- read.csv( URL, stringsAsFactors=FALSE )
+these <- syr$landuse == "Single Family"
+group.colors <- ifelse( these, "firebrick", "gray90" )    
+plot( syr,  border=NA, col=group.colors,
+      main='land_use == "Single Family"', cex.main=2.5 )
+```
+
+```{r, echo=F}
+these <- as.character(syr$LandUse) == "Single Family"
+group.colors <- ifelse( these, "firebrick", "gray90" ) 
+plot( syr,  border=NA, col=group.colors,
+      main='landuse == "Single Family"', cex.main=2.5 )
+```
+
+We will use the downtown area for this lab:
+
+```{r, cache=T, echo=F}
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/downtown-syr.geojson"
+downtown <- geojson_read( URL, what="sp" )
+plot( downtown,  border="gray20", col="gray90" )
+```
+
+```{r, echo=F, eval=F}
+keep <- 
+c("tax_id", "stnum", "stname", "zip",
+"frontfeet", "depth", "sqft", "acres", 
+"nhood", "ward", "censustrac", "landuse",
+"yearbuilt", "units", "vacantbuil",
+"waterservi", 
+"assessedla", "assessedva", 
+"citytaxabl", "starc", "taxtrust", 
+"amtdelinqu", "taxyrsdeli", "overduewat", "totint" )
+
+downtown <- downtown[ , names(downtown) %in% keep ]
+downtown <- downtown[ , keep ]
+
+names( downtown )
+
+new.names <- 
+c("tax_id", "stnum", "stname", "zip",
+"frontfeet", "depth", "sqft", "acres", 
+"nhood", "ward", "censustract", "landuse",
+"yearbuilt", "units", "vacantbuild",
+"watersvc", 
+"assessedland", "assessedval", 
+"citytaxable", "starc", "taxtrust", 
+"amtdelinqt", "taxyrsdelinqt", "overduewater", "totint" )
+
+names( downtown ) <- new.names
+
+str( downtown@data )
+
+downtown$tax_id <- as.character( downtown$tax_id ) 
+downtown$sqft <- as.numeric( as.character( downtown$sqft ) )
+downtown$stnum <- as.character( downtown$stnum ) 
+downtown$stname <- as.character( downtown$stname ) 
+downtown$landuse <- as.character( downtown$landuse ) 
+downtown$yearbuilt <- as.numeric( as.character( downtown$yearbuilt ) )
+
+geojson_write( downtown, file = "downtown-syr.geojson",
+               geometry = "polygon" )
+
 ```
 
 
-## Load the Syracuse Parcel Map
+[ [Data Dictionary](https://ds4ps.github.io/Data-Science-Class/DATA/syr_parcels.html) ]
+
+*Note, the downtown file contains a subset of the fields.*
+
+```{r echo=F}
+head( downtown@data, 10 ) %>% pander() # show first ten rows of data
+```
+
+
+<br>
+<br>
+
+
+
+
+## Load the Downtown Syracuse Parcel Map
 
 You will need the following packages for this lab:
 
@@ -109,9 +180,9 @@ library( rgdal )
 Load the map file:
 
 ```{r, cache=TRUE}
-URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.geojson"
-syr <- geojson_read( URL, what="sp" )
-plot( syr,  border=NA, col="gray80" )
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/downtown-syr.geojson"
+downtown <- geojson_read( URL, what="sp" )
+plot( downtown,  border=NA, col="gray80" )
 ```
 
 For this lab you will construct a group by translating the question into a logical statement, then show a map of the group by adapting the code provided:
@@ -119,34 +190,34 @@ For this lab you will construct a group by translating the question into a logic
 **How many parcels are larger than one acre?**
 
 ```{r}
-these <- dat$acres > 1   # the group I am defining
-sum( these )             # count of parcels in our defined group
-mean( these )            # proportion of total parcels in our defined group
+these <- downtown$acres > 1   # the group I am defining
+sum( these )                  # count of parcels in our defined group
+mean( these )                 # proportion of total parcels in our defined group
 ```
 
 To show the location of this group on a map:
 
 ```{r}
-these <- dat$acres > 1                                    # define your group
+these <- downtown$acres > 1                               # define your group
 group.colors <- ifelse( these, "firebrick", "gray80" )    # don't change this
-plot( syr,  border=NA, col=group.colors )                 # don't change this
+plot( downtown,  border=NA, col=group.colors )            # don't change this
 ```
 
 
 
-**What proportion of tax parcels are single family homes?**
+**What proportion of downtown parcels are occupied by commercial buildings?**
 
 ```{r}
-these <- dat$land_use == "Single Family"
-mean( these )  # 59%
+these <- downtown$landuse == "Commercial"
+mean( these )  # 54%
 ```
 
-Plot single family homes on a map:
+Plot commercial parcels on a map:
 
 ```{r}
-these <- dat$land_use == "Single Family"
-group.colors <- ifelse( these, "firebrick", "gray80" )    # don't change this
-plot( syr,  border=NA, col=group.colors )                 # don't change this
+these <- downtown$landuse == "Commercial"
+group.colors <- ifelse( these, "firebrick", "gray90" )     # don't change this
+plot( downtown,  border="gray70", col=group.colors )       # don't change this
 ```
 
 
@@ -155,26 +226,537 @@ plot( syr,  border=NA, col=group.colors )                 # don't change this
 To define group membership using character vectors or factors we need to know the current group names. We can find this using a **table()** or **unique()** function.
 
 ```{r}
-unique( dat$land_use )
-table( dat$land_use )
+unique( downtown$landuse )
+table( downtown$landuse )
 ```
 
 Note that the spelling has to be identical for the statement to work. 
 
 ```{r}
-sum( dat$land_use == "Apartment" )
-sum( dat$land_use == "apartment" )
+sum( downtown$landuse == "Apartment" )
+sum( downtown$landuse == "apartment" )
 ```
 
 
-### Compound Logical Statements 
+
+
+
+<br><br>
+
+# Lab Instructions
+
+
+
+
+
+
+
+```{r, echo=F, fig.width=10, fig.height=6, eval=F}
+par( mfrow=c(1,2), mar=c(0,0,2,0) )
+
+these <- downtown$landuse == "Parks"                      
+group.colors <- ifelse( these, "firebrick", "gray90" )    
+plot( downtown,  border="gray70", col=group.colors,
+      main="Parks")          
+
+these <- downtown$acres > 1                     
+group.colors <- ifelse( these, "steelblue", "gray90" )    
+plot( downtown,  border="gray70", col=group.colors,
+      main="Large Parcels")            
+```
+
+
+
+
+
+
+
+Answer the following questions using the Syracuse downtown parcels dataset and the functions listed. 
+
+Your solution should include a written response to the question, as well as the code used to generate the result.
+
+
+--- 
+
+
+
+
+#### 1. Where are the majority of vacant lots located in the downtown? Map your results. 
+
+> **land_use** variable 
+
+```{r, echo=F, fig.width=10, fig.height=7}
+par( mar=c(0,0,2,0) )
+these <- downtown$landuse == "Vacant Land"                      
+group.colors <- ifelse( these, "firebrick", "gray90" )    
+plot( downtown,  border="gray70", col=group.colors,
+      main="Vacant Lots")          
+```
+
+<br>
+
+#### 2. How many parking lots are in downtown Syracuse? Map your results. 
+
+> **sum()** function and **landuse** variable 
+
+
+```{r, echo=F, fig.width=10, fig.height=7}
+par( mar=c(0,0,2,0) )
+these <- downtown$landuse == "Parking"                      
+group.colors <- ifelse( these, "firebrick", "gray95" )    
+plot( downtown,  border="gray70", col=group.colors,
+      main="Parking Lots")          
+```
+
+<br>
+
+
+
+
+<br>
+
+
+#### 3. Where is new construction located in the city? 
+
+**Calculate the number of buildings constructed since 1980.**
+
+> **yearbuilt** variable
+
+```{r, echo=F, fig.width=10, fig.height=6, eval=T}
+par( mfrow=c(1,2), mar=c(0,0,2,0) )
+
+these <- downtown$landuse == "Commercial"                      
+group.colors <- ifelse( these, "firebrick", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Commercial Properties")          
+
+these <- downtown$yearbuilt > 1980                    
+group.colors <- ifelse( these, "steelblue", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Built After 1980")            
+```
+
+
+
+
+**What proportion of commercial properties are built since 1980?**
+
+> count commercial properties, and buildings constructed since 1980: 
+> **landuse** and **yearbuilt** variables 
+
+
+
+
+```{r, echo=F, fig.width=12, fig.height=8, eval=T}
+
+
+g1 <- downtown$landuse == "Commercial" 
+t1 <- "Commercial Properties"
+g2 <- downtown$yearbuilt > 1980 
+t2 <- "Constructed After 1980"
+g3 <- downtown$yearbuilt > 1980  & downtown$landuse == "Commercial" 
+t3 <- "Commercial Buildings  AND  Constructed After 1980"
+
+
+
+
+par( mar=c(0,0,2,0) )
+
+grid <- c( 3, 3, 3, 3, 1, 1, 
+           3, 3, 3, 3, 1, 1,  
+           3, 3, 3, 3, 2, 2, 
+           3, 3, 3, 3, 2, 2 )
+  
+layout( matrix( grid , 4, 6, byrow = TRUE) )
+
+borders <- rep( "gray90", nrow(downtown) ) 
+
+these <-  g1                    
+group.colors <- ifelse( these, "firebrick", "gray98" )   
+borders[ these ] <- "firebrick"
+plot( downtown,  border="gray80", col=group.colors,
+      main=t1, cex.main=1.5 )          
+
+these <- g2             
+group.colors <- ifelse( these, "steelblue", "gray98" ) 
+borders[ these ] <- "steelblue"
+plot( downtown,  border="gray80", col=group.colors,
+      main=t2, cex.main=1.5 )     
+
+these <- downtown$landuse == "Commercial"  
+these[ is.na(these) ] <- FALSE
+borders[ these ] <- "firebrick"
+
+these <- downtown$yearbuilt > 1980  
+these[ is.na(these) ] <- FALSE
+borders[ these ] <- "steelblue"
+
+these <- g3
+group.colors <- ifelse( these, "midnightblue", NA )
+these[ is.na(these) ] <- FALSE
+borders[ these ] <- "darkorchid4"
+
+plot( downtown,  border="gray70", lwd=0.1,
+      col=adjustcolor( borders, alpha.f=0.25 ),
+      main=t3,
+      cex.main=2 )
+
+plot( downtown,  border=group.colors, lwd=3,
+      col=NULL,
+      add=TRUE )
+                      
+                
+```
+
+
+
+
+
+
+```{r, echo=F, fig.width=12, fig.height=7, eval=F}
+
+
+g1 <- downtown$landuse == "Commercial" 
+t1 <- "Commercial Properties"
+g2 <- downtown$yearbuilt > 1980 
+t2 <- "Constructed After 1980"
+g3 <- downtown$yearbuilt > 1980  & downtown$landuse == "Commercial" 
+t3 <- "Commercial Buildings  \nAND  \nConstructed After 1980"
+
+
+
+
+par( mar=c(0,0,6,0) )
+
+grid <- c( 0, 0, 3, 3, 3, 0, 0,
+           1, 1, 3, 3, 3, 2, 2, 
+           1, 1, 3, 3, 3, 2, 2,
+           1, 1, 3, 3, 3, 2, 2,
+           0, 0, 3, 3, 3, 0, 0 )
+  
+layout( matrix( grid , 5, 7, byrow = TRUE) )
+
+these <-  g1                    
+group.colors <- ifelse( these, "firebrick", "gray98" )   
+borders[ these ] <- "firebrick"
+plot( downtown,  border="gray80", col=group.colors,
+      main=t1, cex.main=1.5 )          
+
+these <- g2             
+group.colors <- ifelse( these, "steelblue", "gray98" ) 
+borders[ these ] <- "steelblue"
+plot( downtown,  border="gray80", col=group.colors,
+      main=t2, cex.main=1.5 )     
+
+borders <- rep( "gray90", nrow(downtown) ) 
+
+these <- downtown$landuse == "Commercial"  
+these[ is.na(these) ] <- FALSE
+borders[ these ] <- "firebrick"
+
+these <- downtown$yearbuilt > 1980  
+these[ is.na(these) ] <- FALSE
+borders[ these ] <- "steelblue"
+
+these <- g3
+group.colors <- ifelse( these, "darkorchid", NA )
+these[ is.na(these) ] <- FALSE
+borders[ these ] <- "darkorchid"
+
+plot( downtown,  border="gray70", lwd=0.1,
+      col=adjustcolor( borders, alpha.f=0.25 ),
+      main=t3,
+      cex.main=2 )
+
+plot( downtown,  border=group.colors, lwd=3,
+      col=NULL,
+      add=TRUE )
+                      
+                
+```
+
+
+
+
+
+
+
+
+
+
+<br>
+
+ 
+#### 4. How many parcels have assessed values over $10 million? Map your results. 
+
+> use the **sum()** function with **assessedval** variable;  
+> create a group that includes parcels with apartments and two and three family homes 
+
+
+```{r, echo=F, fig.height=7, eval=T}
+these <- downtown$assessedval > 10000000                   
+group.colors <- ifelse( these, "firebrick", "gray90" )    
+plot( downtown,  border="gray70", col=group.colors,
+      main="Assessed Value Over $10,000,000")
+```
+
+
+<br>
+
+
+    
+#### 5. How many properties are delinquient on taxes? Map your results. 
+
+> **sum()** with the **amtdelinqt**;
+
+
+```{r, echo=F, fig.height=7, eval=T}
+these <- downtown$amtdelinqt > 0                  
+group.colors <- ifelse( these, "firebrick", "gray90" )    
+plot( downtown,  border="gray70", col=group.colors,
+      main="Delinquint Taxes Owed")
+```
+
+<br>
+
+    
+#### 6. What proportion of parcels have delinquent tax payments owed? 
+
+> **mean()** with the **amtdelinqt** variable
+
+
+<br>
+
+
+
+
+
+#### 7. What proportion of commercial properties are delinquit on taxes? What proportion of delinquint tax bills are owed by commercial parcels? 
+
+> **mean()** with **amtdelinqt** and **landuse** variables
+> define your groups with compound statements first
+> then calculate proportions 
+
+```{r, echo=F, fig.width=10, fig.height=6, eval=T}
+par( mfrow=c(1,2), mar=c(0,0,2,0) )
+
+these <- downtown$landuse == "Commercial" & downtown$amtdelinqt > 0                      
+group.colors <- ifelse( these, "firebrick", "gray90" )    
+plot( downtown,  border="gray70", col=group.colors,
+      main="Tax Delinquint Commercial Properties")          
+
+these <- downtown$landuse != "Commercial" & downtown$amtdelinqt > 0                     
+group.colors <- ifelse( these, "steelblue", "gray90" )    
+plot( downtown,  border="gray70", col=group.colors,
+      main="Tax Delinquint Non-Commercial Properties")            
+```
+
+
+<br>
+
+
+#### 7. How many of each land use type are delinquint on taxes? 
+
+> **table()** with **amtdelinqt** and **landuse** variables
+> define delinquincy first, then create a table with
+> landuse and delinquincy
+
+
+
+
+<br>
+<br>
+
+
+---
+
+#### Challenge Questions
+
+**Map all of the land valued at over $1 million per acre.**
+
+**Map all of the land valued at less than $500,000 per acre.**
+
+
+```{r, echo=F, fig.height=6}
+value.acre <- downtown$assessedland / downtown$acres
+# summary( value.acre )
+
+par( mar=c(0,0,5,0), mfrow=c(1,2) )
+    
+these <- value.acre > 1000000  
+group.colors <- ifelse( these, "darkorange2", "gray90" )    
+plot( downtown,  border="gray95", col=group.colors,
+      main="Land Valued at Over \n$1m Per Acre")
+
+these <- value.acre < 500000 
+group.colors <- ifelse( these, "darkorange2", "gray90" )    
+plot( downtown,  border="gray95", col=group.colors,
+      main="Land Valued at Less Than \n$500k Per Acre")
+```
+
+
+**What is the total value of all of the commercial parcels in the city?**
+
+**What is the total value of all of the non-commercial parcels in the city?**
+
+
+```{r, echo=F, fig.height=6}
+
+par( mar=c(0,0,5,0), mfrow=c(1,2) )
+    
+these <- downtown$landuse == "Commercial"  
+group.colors <- ifelse( these, "midnightblue", "gray90" )    
+plot( downtown,  border="gray97", col=group.colors,
+      main="Commercial Parcels")
+
+these <- ! downtown$landuse == "Commercial" 
+group.colors <- ifelse( these, "midnightblue", "gray90" )    
+plot( downtown,  border="gray97", col=group.colors,
+      main="Non-Commercial Parcels")
+```
+
+
+---
+
+
+<br>
+
+# Submission Instructions
+
+When you have completed your assignment, knit your RMD file to generate your rendered HTML file. 
+
+Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your HTML and RMD files to the appropriate lab submission link.
+
+Platforms like BlackBoard and Canvas sometimes disallow you from submitting HTML files when there is embedded computer code. If this happens create a zipped folder with both the RMD and HTML files.
+
+Remember to:
+
+* name your files according to the convention: **Lab-##-LastName.Rmd**
+* show your solution, include your code.
+* do not print excessive output (like a full data set).
+* follow appropriate style guidelines (spaces between arguments, etc.).
+
+See [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml) for examples.
+
+
+---
+
+<br>
+
+## Markdown Trouble?
+
+If you are having problems with your RMD file, visit the [**RMD File Styles and Knitting Tips**](https://ds4ps.org/cpp-526-fall-2019/labs/r-markdown-files.html) manual.
+
+
+### Notes on Knitting
+
+Note that when you knit a file, it starts from a blank slate. You might have packages loaded or datasets active on your local machine, so you can run code chunks fine. But when you knit you might get errors that functions cannot be located or datasets don't exist. Be sure that you have included chunks to load these in your RMD file.
+
+Your RMD file will not knit if you have errors in your code. If you get stuck on a question, just add `eval=F` to the code chunk and it will be ignored when you knit your file. That way I can give you credit for attempting the question and provide guidance on fixing the problem.
+
+
+<br>
+<br>
+
+
+## Missing Values
+
+Note, when there are missing values in a vector (NAs) you need to tell mathematical functions like **sum()** and **mean()** to ignore them, otherwise they will return NA. 
+
+```{r}
+x <- c( 1, 2, NA, 4 )
+sum( x )
+sum( x, na.rm=T )
+```
+
+Any ideas why R would default to NA for mathematical functions? 
+
+Consider an example with a free museum that brings in a special exhibit. They don't charge when you enter, but if you visit the special exhibit you have the option to make a donation to support the event. The computer logs all visitors, but it only enters values for those that visited the special exhibit.
+
+```{r}
+x <- c( NA, NA, 20, NA, 0, 15, NA, 45, NA, NA, NA, NA, 10, 0, NA, NA )
+
+# how many people visited the museum today?
+length( x )
+
+# how much was donated to the special exhibit? 
+sum( x, na.rm=T )
+
+# what was the average donation made to the special exhibit? 
+mean( x, na.rm=T )
+
+# if we know that 200 people will visit the meseum this weekend,
+# how much do we expect the special exhibit to raise? 
+#
+# people visiting x average donation
+200 * mean( x, na.rm=T )
+```
+
+Is this a correct estimate? 
+
+What average does this represent (who is in the denominator)? 
+
+```{r}
+x <- c( NA, NA, 20, NA, 0, 15, NA, 45, NA, NA, NA, NA, 10, 0, NA, NA )
+# what was the average donation made to the special exhibit? 
+mean( x, na.rm=T )
+```
+
+Let's look at that again: 
+
+```{r}
+# average donation for all visitors
+sum( x, na.rm=T ) / length( x )
+
+# number of people that attended the exhibit
+sum( x >= 0, na.rm=T )
+
+# proportion of people that attended the exhibit
+sum( x >= 0, na.rm=T ) / length( x )
+
+# average donation for those that went to the exhibit
+sum( x, na.rm=T ) / sum( x >= 0, na.rm=T )
+```
+To get an accurate estimate of the special event revenues we need to consider how many museum visitors will attend the exhibit: 
+ 
+```{r}
+# accurate estimate:
+# people x those at exhibit x ave donation
+200 * ( sum( x >= 0, na.rm=T ) / length( x ) ) * mean( x, na.rm=T )
+
+# alternatively: 
+# number of visitors x ave donation per museum visitor
+200 * ( sum( x, na.rm=T ) / length(x) )
+```
+ 
+Missing values serve a very important function in statistics, because they force the analyst to decide whether we can ignore them completely, or whether the need to be interpretted if we want the model to be accurate. So when you get this: 
+
+```{r}
+mean( x )
+```
+
+R is telling you to take a step back to determine how we should treat these values. We can interpret missing values as zero when we tabulate the total of donations: 
+
+```{r}
+sum( x, na.rm=T )
+```
+
+But it is problematic when we are looking at proportions or averages in this context.
+
+Missing values means something different in every context, so pay attention to them when they exist. I guarantee that you will make an error in an important calculation at least once in your career because you ignore missing values. 
+
+
+<br>
+<br>
+
+## Compound Logical Statements 
 
 We often want to create a new group by combining existing groups:
 
 ```{r}
-public.goods  <-  dat$land_use == "Community Services" | 
-                  dat$land_use == "Schools" | 
-                  dat$land_use == "Recreation"
+public.goods  <-  downtown$land_use == "Community Services" | 
+                  downtown$land_use == "Schools" | 
+                  downtown$land_use == "Recreation"
 
 mean( public.goods )
 ```
@@ -233,217 +815,15 @@ If you pay attention to the order of operations, just like mathematical operator
 
 
 
-<br><br>
-
-# Lab Instructions
-
-
-```{r}
-URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/downtown-syr.geojson"
-downtown <- geojson_read( URL, what="sp" )
-plot( downtown,  border="gray20", col="gray90" )
-```
-
-
-```{r}
-these <- downtown$landuse == "Parking"                      # define your group
-group.colors <- ifelse( these, "firebrick", "gray80" )    # don't change this
-plot( downtown,  border=NA, col=group.colors )            # don't change this
-```
-
-
-
-```{r, echo=F, fig.width=10, fig.height=7}
-par( mfrow=c(1,2), mar=c(0,0,2,0) )
-
-these <- downtown$landuse == "Parks"                      
-group.colors <- ifelse( these, "firebrick", "gray80" )    
-plot( downtown,  border="gray20", col=group.colors,
-      main="Parks")          
-
-these <- downtown$acres > 1                     
-group.colors <- ifelse( these, "steelblue", "gray80" )    
-plot( downtown,  border="gray20", col=group.colors,
-      main="Large Parcels")            
-```
-
-
-```{r}
-these <- downtown$acres > 1 & downtown$landuse == "Parks"                    
-group.colors <- ifelse( these, "orchid3", "gray80" )    
-plot( downtown,  border="gray20", col=group.colors,
-      main="Large Parks Downtown")
-```
-
-
-Answer the following questions using the Syracuse downtown parcels dataset and the functions listed. 
-
-Your solution should include a written response to the question, as well as the code used to generate the result.
-
-
---- 
-
-
-
-#### 1. How many Single Family homes are in Syracuse? Map your results. 
-
-> **sum()** function and **land_use** variable 
-
-
-```{r, echo=F, fig.width=10, fig.height=7}
-downtown$landuse <- as.character(downtown$landuse)
-
-par( mar=c(0,0,2,0) )
-
-these <- downtown$landuse == "Apartment"                      
-group.colors <- ifelse( these, "firebrick", "gray80" )    
-plot( downtown,  border="gray20", col=group.colors,
-      main="Apartments")          
-```
-
-<br>
-
-
-#### 2. Where are the majority of vacant lots located in the down? Map your results. 
-
-> **land_use** variable 
-
-```{r, echo=F, fig.width=10, fig.height=7}
-par( mar=c(0,0,2,0) )
-
-these <- downtown$landuse == "Vacant Land"                      
-group.colors <- ifelse( these, "firebrick", "gray80" )    
-plot( downtown,  border="gray20", col=group.colors,
-      main="Vacant Lots")          
-```
-
-<br>
-
-
-
-#### 3. Where is new construction? 
-
-**Calculate the number of buildings constructed since 1980.**
-
-> count buildings constructed since 1980: 
-> ****yearbuilt** variable
-
-
-```{r, echo=F, fig.width=10, fig.height=7}
-downtown$yearbuilt <- as.numeric( as.character( downtown$yearbuilt ) )
-
-par( mar=c(0,0,2,0) )
-
-these <- downtown$yearbuilt > 1980                     
-group.colors <- ifelse( these, "firebrick", "gray80" )    
-plot( downtown,  border="gray20", col=group.colors,
-      main="Buildings Constructed After 1980")          
-```
-
-**What proportion of buildings constructed since 1980 are commercial properties.**
-
-> count commercial properties, and buildings constructed since 1980: 
-> **land_use** and **yearbuilt** variables 
-
-```{r, echo=F, fig.width=10, fig.height=7}
-par( mfrow=c(1,2), mar=c(0,0,2,0) )
-
-these <- downtown$landuse == "Commercial"                      
-group.colors <- ifelse( these, "firebrick", "gray80" )    
-plot( downtown,  border="gray20", col=group.colors,
-      main="Commercial Properties")          
-
-these <- downtown$yearbuilt > 1980                    
-group.colors <- ifelse( these, "steelblue", "gray80" )    
-plot( downtown,  border="gray20", col=group.colors,
-      main="Built After 1980")            
-```
-
-
-
-```{r, echo=F, fig.height=7}
-these <- downtown$yearbuilt > 1980  & downtown$landuse == "Commercial"                   
-group.colors <- ifelse( these, "orchid3", "gray80" )    
-plot( downtown,  border="gray20", col=group.colors,
-      main="Commercial Buildings Constructed Since 1980")
-```
-
-<br>
-
- 
-#### 4. How many parcels contain multi-family units? Map your results. 
-
-> use the **sum()** function with **land_use** variable;  
-> create a group that includes parcels with apartments and two and three family homes 
-
-<br>
-
-
-    
-#### 5. How many single family homes are worth more than $200,000? Map your results. 
-
-> **sum()** with the **assessedva** and **land_use** variables;
-
-<br>
-
-    
-#### 6. What proportion of parcels have delinquent tax payments owed? 
-
-> **mean()** with the **amtdelinqu** variable
-
-
-<br>
-
-#### 7. Does tax delinquiency vary by land use? 
-
-> **table()** with **amtdelinqu** and **land_use** variables
-
-
-
-
-
----
-
-
-<br>
-
-# Submission Instructions
-
-When you have completed your assignment, knit your RMD file to generate your rendered HTML file. 
-
-Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your HTML and RMD files to the appropriate lab submission link.
-
-Platforms like BlackBoard and Canvas sometimes disallow you from submitting HTML files when there is embedded computer code. If this happens create a zipped folder with both the RMD and HTML files.
-
-Remember to:
-
-* name your files according to the convention: **Lab-##-LastName.Rmd**
-* show your solution, include your code.
-* do not print excessive output (like a full data set).
-* follow appropriate style guidelines (spaces between arguments, etc.).
-
-See [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml) for examples.
-
-
----
-
-<br>
-
-## Markdown Trouble?
-
-If you are having problems with your RMD file, visit the [**RMD File Styles and Knitting Tips**](https://ds4ps.org/cpp-526-fall-2019/labs/r-markdown-files.html) manual.
-
-
-### Notes on Knitting
-
-Note that when you knit a file, it starts from a blank slate. You might have packages loaded or datasets active on your local machine, so you can run code chunks fine. But when you knit you might get errors that functions cannot be located or datasets don't exist. Be sure that you have included chunks to load these in your RMD file.
-
-Your RMD file will not knit if you have errors in your code. If you get stuck on a question, just add `eval=F` to the code chunk and it will be ignored when you knit your file. That way I can give you credit for attempting the question and provide guidance on fixing the problem.
 
 
 <br>
 <br>
 
+----
+
+<br>
+<br>
 
 
 
