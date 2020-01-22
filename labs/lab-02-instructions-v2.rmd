@@ -1,0 +1,458 @@
+---
+title: 'Lab 02 - Selecting Groups Within Data'
+output:
+  html_document:
+    theme: readable
+    df_print: paged
+    highlight: tango
+    include:
+      after_body: footer.html    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( echo = TRUE, message=F, warning=F, fig.width=10, fig.height=12 )
+library( dplyr )
+library( pander )
+library( geojsonio )
+library( sp )
+library( rgdal )
+
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/downtown-syr.geojson"
+dt <- geojson_read( URL, what="sp" )
+par( mar=c(0,0,0,0) )
+plot( dt,  border=NA, col="gray80" )
+```
+
+#### [CPP 526: Foundations of Data Science I](https://ds4ps.org/cpp-526-spr-2020/)
+
+<br>
+
+
+---
+
+<br>
+
+#### This lab offers practice with logical statements used to create groups from your data.
+
+
+I have provided you with a **LAB-02 RMD template**: 
+
+
+[![](images/download.png)](https://www.dropbox.com/s/tmiqepil1u05e1q/Lab-02-LastName%20.Rmd?dl=1)
+
+
+--- 
+
+<br><br>
+
+## Functions
+
+You will use the following functions for this lab: 
+
+```{r, eval=F}
+logical operators  ( ==, >, <, ! )
+sum()        # count TRUEs in logical vectors
+mean()       # proportion of TRUEs in logical vectors
+compound statements with & (AND) and | (OR) operators 
+```
+
+<br><br>
+
+
+
+# Data
+
+This lab uses **city tax parcel data** from Syracuse, NY. [ [Data Dictionary](https://ds4ps.github.io/Data-Science-Class/DATA/syr_parcels.html) ]
+
+* Each house, business, park or empty lot in the city sits on a parcel of land, and the tax rate for that parcel is determined by the city. 
+* All of the characteristics of each parcel is stored in a central database, along with information about the land use classifications, owners, and whether the property is up-to-date on taxes and water bills.  
+* Each row represents one tax parcel, and all tax parcels in the city are recorded in the dataset.  
+
+```{r, echo=F}
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
+dat <- read.csv( URL, stringsAsFactors=FALSE )
+head( dat, 10 ) # show first ten rows of data
+```
+
+<br>
+<br>
+
+
+## Loading Data Into R
+
+You can load the dataset by including the following code chunk in your file: 
+
+```{r, eval=F}
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.csv"
+dat <- read.csv( URL, stringsAsFactors=FALSE )
+```
+
+
+## Load the Syracuse Parcel Map
+
+You will need the following packages for this lab:
+
+```{r, eval=F}
+install.packages( "geojsonio" )
+install.packages( "sp" )
+install.packages( "rgdal" )
+```
+
+NOTE: do not include include install package commands in your RMD chunks. Trying to install packages while knitting can cause errors. 
+
+```{r, eval=F}
+library( geojsonio )
+library( sp )
+library( rgdal )
+```
+
+Load the map file:
+
+```{r, cache=TRUE}
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.geojson"
+syr <- geojson_read( URL, what="sp" )
+plot( syr,  border=NA, col="gray80" )
+```
+
+For this lab you will construct a group by translating the question into a logical statement, then show a map of the group by adapting the code provided:
+
+**How many parcels are larger than one acre?**
+
+```{r}
+these <- dat$acres > 1   # the group I am defining
+sum( these )             # count of parcels in our defined group
+mean( these )            # proportion of total parcels in our defined group
+```
+
+To show the location of this group on a map:
+
+```{r}
+these <- dat$acres > 1                                    # define your group
+group.colors <- ifelse( these, "firebrick", "gray80" )    # don't change this
+plot( syr,  border=NA, col=group.colors )                 # don't change this
+```
+
+
+
+**What proportion of tax parcels are single family homes?**
+
+```{r}
+these <- dat$land_use == "Single Family"
+mean( these )  # 59%
+```
+
+Plot single family homes on a map:
+
+```{r}
+these <- dat$land_use == "Single Family"
+group.colors <- ifelse( these, "firebrick", "gray80" )    # don't change this
+plot( syr,  border=NA, col=group.colors )                 # don't change this
+```
+
+
+## Land Use
+
+To define group membership using character vectors or factors we need to know the current group names. We can find this using a **table()** or **unique()** function.
+
+```{r}
+unique( dat$land_use )
+table( dat$land_use )
+```
+
+Note that the spelling has to be identical for the statement to work. 
+
+```{r}
+sum( dat$land_use == "Apartment" )
+sum( dat$land_use == "apartment" )
+```
+
+
+### Compound Logical Statements 
+
+We often want to create a new group by combining existing groups:
+
+```{r}
+public.goods  <-  dat$land_use == "Community Services" | 
+                  dat$land_use == "Schools" | 
+                  dat$land_use == "Recreation"
+
+mean( public.goods )
+```
+
+
+The is a **compound logical statement** because there is more than one criteria used to define the group. Compound statements require the use of the **OR** operator `|` or the **AND** `&` operator. They can also combine criteria from multiple variables in the model. 
+
+For example, a brown-eyed girl would be written:
+
+```{r, eval=F}
+brown.eyed.girl <- dat$gender == "female" & dat$eye.color == "brown"
+```
+
+Logical statements are one of the most useful tools in data, but they are a little tricky at first. Consider the difference between the criteria FEMALE & BROWN EYES vs FEMALE | BROWN EYES. 
+
+In a world where eyes is either brown or green and gender is either male or female, these two criteria would return the following: 
+
+FEMALE & BROWN EYES
+
+* female + brown eyes  
+* *intersection of all females and all people with brown eyes*
+
+FEMALE | BROWN EYES
+
+* female + brown eyes 
+* female + green eyes 
+* male + brown eyes 
+* *all females in the dataset and all people with brown eyes* 
+
+Note that in plain English we say "females AND people with brown eyes" when we are combining groups, using the OR operator to create a union of groups. 
+
+A good way to keep the logic straight is to add the term "ONLY" to the front of each plain English group descriptor. "ONLY females in the dataset AND ONLY people with brown eyes". 
+
+Also pay attention to the order of operations when applying the NOT operator `!` to logical statements. The operator flips each TRUE to a FALSE in a logical vector, and vice-versa each FALSE to TRUE. It creates a compliment set, which is anything not in the current group. 
+
+
+Consider these two cases:
+
+! ( FEMALE & BROWN EYES )
+
+* female + green eyes 
+* male + brown eyes
+* male + green eyes
+* *the values of brown-eyed girls become FALSE, and everything else is TRUE or part of the new group* 
+
+! FEMALE & BROWN EYES
+
+* male + brown eyes
+* *first identify NOT females (all males in the data), then intersect that group with brown eyes* 
+
+Note that the NOT operator is not equivalent to what some people might consider an OPPOSITE operation. The compliment group of brown-eyed girls is not green-eyed boys! That would be written: 
+
+! FEMALE & ! BROWN EYES
+
+If you pay attention to the order of operations, just like mathematical operators, it will help you avoid making errors. 
+
+
+
+<br><br>
+
+# Lab Instructions
+
+
+```{r}
+URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/downtown-syr.geojson"
+downtown <- geojson_read( URL, what="sp" )
+plot( downtown,  border="gray20", col="gray90" )
+```
+
+
+```{r}
+these <- downtown$landuse == "Parking"                      # define your group
+group.colors <- ifelse( these, "firebrick", "gray80" )    # don't change this
+plot( downtown,  border=NA, col=group.colors )            # don't change this
+```
+
+
+
+```{r, echo=F, fig.width=10, fig.height=7}
+par( mfrow=c(1,2), mar=c(0,0,2,0) )
+
+these <- downtown$landuse == "Parks"                      
+group.colors <- ifelse( these, "firebrick", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Parks")          
+
+these <- downtown$acres > 1                     
+group.colors <- ifelse( these, "steelblue", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Large Parcels")            
+```
+
+
+```{r}
+these <- downtown$acres > 1 & downtown$landuse == "Parks"                    
+group.colors <- ifelse( these, "orchid3", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Large Parks Downtown")
+```
+
+
+Answer the following questions using the Syracuse downtown parcels dataset and the functions listed. 
+
+Your solution should include a written response to the question, as well as the code used to generate the result.
+
+
+--- 
+
+
+
+#### 1. How many Single Family homes are in Syracuse? Map your results. 
+
+> **sum()** function and **land_use** variable 
+
+
+```{r, echo=F, fig.width=10, fig.height=7}
+downtown$landuse <- as.character(downtown$landuse)
+
+par( mar=c(0,0,2,0) )
+
+these <- downtown$landuse == "Apartment"                      
+group.colors <- ifelse( these, "firebrick", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Apartments")          
+```
+
+<br>
+
+
+#### 2. Where are the majority of vacant lots located in the down? Map your results. 
+
+> **land_use** variable 
+
+```{r, echo=F, fig.width=10, fig.height=7}
+par( mar=c(0,0,2,0) )
+
+these <- downtown$landuse == "Vacant Land"                      
+group.colors <- ifelse( these, "firebrick", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Vacant Lots")          
+```
+
+<br>
+
+
+
+#### 3. Where is new construction? 
+
+**Calculate the number of buildings constructed since 1980.**
+
+> count buildings constructed since 1980: 
+> ****yearbuilt** variable
+
+
+```{r, echo=F, fig.width=10, fig.height=7}
+downtown$yearbuilt <- as.numeric( as.character( downtown$yearbuilt ) )
+
+par( mar=c(0,0,2,0) )
+
+these <- downtown$yearbuilt > 1980                     
+group.colors <- ifelse( these, "firebrick", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Buildings Constructed After 1980")          
+```
+
+**What proportion of buildings constructed since 1980 are commercial properties.**
+
+> count commercial properties, and buildings constructed since 1980: 
+> **land_use** and **yearbuilt** variables 
+
+```{r, echo=F, fig.width=10, fig.height=7}
+par( mfrow=c(1,2), mar=c(0,0,2,0) )
+
+these <- downtown$landuse == "Commercial"                      
+group.colors <- ifelse( these, "firebrick", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Commercial Properties")          
+
+these <- downtown$yearbuilt > 1980                    
+group.colors <- ifelse( these, "steelblue", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Built After 1980")            
+```
+
+
+
+```{r, echo=F, fig.height=7}
+these <- downtown$yearbuilt > 1980  & downtown$landuse == "Commercial"                   
+group.colors <- ifelse( these, "orchid3", "gray80" )    
+plot( downtown,  border="gray20", col=group.colors,
+      main="Commercial Buildings Constructed Since 1980")
+```
+
+<br>
+
+ 
+#### 4. How many parcels contain multi-family units? Map your results. 
+
+> use the **sum()** function with **land_use** variable;  
+> create a group that includes parcels with apartments and two and three family homes 
+
+<br>
+
+
+    
+#### 5. How many single family homes are worth more than $200,000? Map your results. 
+
+> **sum()** with the **assessedva** and **land_use** variables;
+
+<br>
+
+    
+#### 6. What proportion of parcels have delinquent tax payments owed? 
+
+> **mean()** with the **amtdelinqu** variable
+
+
+<br>
+
+#### 7. Does tax delinquiency vary by land use? 
+
+> **table()** with **amtdelinqu** and **land_use** variables
+
+
+
+
+
+---
+
+
+<br>
+
+# Submission Instructions
+
+When you have completed your assignment, knit your RMD file to generate your rendered HTML file. 
+
+Login to Canvas at <http://canvas.asu.edu> and navigate to the assignments tab in the course repository. Upload your HTML and RMD files to the appropriate lab submission link.
+
+Platforms like BlackBoard and Canvas sometimes disallow you from submitting HTML files when there is embedded computer code. If this happens create a zipped folder with both the RMD and HTML files.
+
+Remember to:
+
+* name your files according to the convention: **Lab-##-LastName.Rmd**
+* show your solution, include your code.
+* do not print excessive output (like a full data set).
+* follow appropriate style guidelines (spaces between arguments, etc.).
+
+See [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml) for examples.
+
+
+---
+
+<br>
+
+## Markdown Trouble?
+
+If you are having problems with your RMD file, visit the [**RMD File Styles and Knitting Tips**](https://ds4ps.org/cpp-526-fall-2019/labs/r-markdown-files.html) manual.
+
+
+### Notes on Knitting
+
+Note that when you knit a file, it starts from a blank slate. You might have packages loaded or datasets active on your local machine, so you can run code chunks fine. But when you knit you might get errors that functions cannot be located or datasets don't exist. Be sure that you have included chunks to load these in your RMD file.
+
+Your RMD file will not knit if you have errors in your code. If you get stuck on a question, just add `eval=F` to the code chunk and it will be ignored when you knit your file. That way I can give you credit for attempting the question and provide guidance on fixing the problem.
+
+
+<br>
+<br>
+
+
+
+
+
+<style>
+blockquote {
+    padding: 11px 22px;
+    margin: 0 0 22px;
+    font-size: 18px;
+    border-left: 5px solid lightgray;
+}
+</style>

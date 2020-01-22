@@ -1,0 +1,12 @@
+base
+methods
+datasets
+utils
+grDevices
+graphics
+stats
+dplyr
+pander
+geojsonio
+sp
+rgdal
