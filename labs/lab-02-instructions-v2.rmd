@@ -754,11 +754,11 @@ Missing values means something different in every context, so pay attention to t
 We often want to create a new group by combining existing groups:
 
 ```{r}
-public.goods  <-  downtown$land_use == "Community Services" | 
-                  downtown$land_use == "Schools" | 
-                  downtown$land_use == "Recreation"
+public.goods  <-  downtown$landuse == "Parks" | 
+                  downtown$landuse == "Parking" | 
+                  downtown$landuse == "Vacant Land"
 
-mean( public.goods )
+mean( public.goods ) # proportion of downtown
 ```
 
 

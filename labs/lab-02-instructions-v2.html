@@ -1073,12 +1073,12 @@ create a group that includes parcels with apartments and two and three family ho
 <div id="compound-logical-statements" class="section level2">
 <h2>Compound Logical Statements</h2>
 <p>We often want to create a new group by combining existing groups:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">public.goods  &lt;-<span class="st">  </span>downtown<span class="op">$</span>land_use <span class="op">==</span><span class="st"> &quot;Community Services&quot;</span> <span class="op">|</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb53-2" title="2"><span class="st">                  </span>downtown<span class="op">$</span>land_use <span class="op">==</span><span class="st"> &quot;Schools&quot;</span> <span class="op">|</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb53-3" title="3"><span class="st">                  </span>downtown<span class="op">$</span>land_use <span class="op">==</span><span class="st"> &quot;Recreation&quot;</span></a>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">public.goods  &lt;-<span class="st">  </span>downtown<span class="op">$</span>landuse <span class="op">==</span><span class="st"> &quot;Parks&quot;</span> <span class="op">|</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="st">                  </span>downtown<span class="op">$</span>landuse <span class="op">==</span><span class="st"> &quot;Parking&quot;</span> <span class="op">|</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb53-3" title="3"><span class="st">                  </span>downtown<span class="op">$</span>landuse <span class="op">==</span><span class="st"> &quot;Vacant Land&quot;</span></a>
 <a class="sourceLine" id="cb53-4" title="4"></a>
-<a class="sourceLine" id="cb53-5" title="5"><span class="kw">mean</span>( public.goods )</a></code></pre></div>
-<pre><code>## [1] NaN</code></pre>
+<a class="sourceLine" id="cb53-5" title="5"><span class="kw">mean</span>( public.goods ) <span class="co"># proportion of downtown</span></a></code></pre></div>
+<pre><code>## [1] 0.3367609</code></pre>
 <p>The is a <strong>compound logical statement</strong> because there is more than one criteria used to define the group. Compound statements require the use of the <strong>OR</strong> operator <code>|</code> or the <strong>AND</strong> <code>&amp;</code> operator. They can also combine criteria from multiple variables in the model.</p>
 <p>For example, a brown-eyed girl would be written:</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">brown.eyed.girl &lt;-<span class="st"> </span>dat<span class="op">$</span>gender <span class="op">==</span><span class="st"> &quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>dat<span class="op">$</span>eye.color <span class="op">==</span><span class="st"> &quot;brown&quot;</span></a></code></pre></div>
