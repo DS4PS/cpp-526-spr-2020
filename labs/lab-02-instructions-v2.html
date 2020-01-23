@@ -844,7 +844,7 @@ summary {
 <p>Load the map file:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">URL &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/downtown-syr.geojson&quot;</span></a>
 <a class="sourceLine" id="cb6-2" title="2">downtown &lt;-<span class="st"> </span><span class="kw">geojson_read</span>( URL, <span class="dt">what=</span><span class="st">&quot;sp&quot;</span> )</a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="kw">plot</span>( downtown,  <span class="dt">border=</span><span class="ot">NA</span>, <span class="dt">col=</span><span class="st">&quot;gray80&quot;</span> )</a></code></pre></div>
+<a class="sourceLine" id="cb6-3" title="3"><span class="kw">plot</span>( downtown,  <span class="dt">border=</span><span class="st">&quot;gray50&quot;</span>, <span class="dt">col=</span><span class="st">&quot;gray80&quot;</span> )</a></code></pre></div>
 <p><img src="lab-02-instructions-v2_files/figure-html/unnamed-chunk-10-1.png" width="960" /></p>
 <p>For this lab you will construct a group by translating the question into a logical statement, then show a map of the group by adapting the code provided:</p>
 <p><strong>How many parcels are larger than one acre?</strong></p>
@@ -856,7 +856,7 @@ summary {
 <p>To show the location of this group on a map:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">these &lt;-<span class="st"> </span>downtown<span class="op">$</span>acres <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>                               <span class="co"># define your group</span></a>
 <a class="sourceLine" id="cb11-2" title="2">group.colors &lt;-<span class="st"> </span><span class="kw">ifelse</span>( these, <span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;gray80&quot;</span> )    <span class="co"># don&#39;t change this</span></a>
-<a class="sourceLine" id="cb11-3" title="3"><span class="kw">plot</span>( downtown,  <span class="dt">border=</span><span class="ot">NA</span>, <span class="dt">col=</span>group.colors )            <span class="co"># don&#39;t change this</span></a></code></pre></div>
+<a class="sourceLine" id="cb11-3" title="3"><span class="kw">plot</span>( downtown,  <span class="dt">border=</span><span class="st">&quot;gray70&quot;</span>, <span class="dt">col=</span>group.colors )      <span class="co"># don&#39;t change this</span></a></code></pre></div>
 <p><img src="lab-02-instructions-v2_files/figure-html/unnamed-chunk-12-1.png" width="960" /></p>
 <p><strong>What proportion of downtown parcels are occupied by commercial buildings?</strong></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">these &lt;-<span class="st"> </span>downtown<span class="op">$</span>landuse <span class="op">==</span><span class="st"> &quot;Commercial&quot;</span></a>
@@ -931,14 +931,13 @@ summary {
 <div id="how-many-parcels-have-assessed-values-over-10-million-map-your-results." class="section level4">
 <h4>4. How many parcels have assessed values over $10 million? Map your results.</h4>
 <blockquote>
-<p>use the <strong>sum()</strong> function with <strong>assessedval</strong> variable;<br />
-create a group that includes parcels with apartments and two and three family homes</p>
+<p>use the <strong>sum()</strong> function with <strong>assessedval</strong> variable;</p>
 </blockquote>
 <p><img src="lab-02-instructions-v2_files/figure-html/unnamed-chunk-23-1.png" width="960" /></p>
 <p><br></p>
 </div>
-<div id="how-many-properties-are-delinquient-on-taxes-map-your-results." class="section level4">
-<h4>5. How many properties are delinquient on taxes? Map your results.</h4>
+<div id="how-many-properties-are-delinquent-on-taxes-map-your-results." class="section level4">
+<h4>5. How many properties are delinquent on taxes? Map your results.</h4>
 <blockquote>
 <p><strong>sum()</strong> with the <strong>amtdelinqt</strong>;</p>
 </blockquote>
@@ -952,18 +951,18 @@ create a group that includes parcels with apartments and two and three family ho
 </blockquote>
 <p><br></p>
 </div>
-<div id="what-proportion-of-commercial-properties-are-delinquit-on-taxes-what-proportion-of-delinquint-tax-bills-are-owed-by-commercial-parcels" class="section level4">
-<h4>7. What proportion of commercial properties are delinquit on taxes? What proportion of delinquint tax bills are owed by commercial parcels?</h4>
+<div id="what-proportion-of-commercial-properties-are-delinquent-on-taxes-what-proportion-of-delinquent-tax-bills-are-owed-by-commercial-parcels" class="section level4">
+<h4>7. What proportion of commercial properties are delinquent on taxes? What proportion of delinquent tax bills are owed by commercial parcels?</h4>
 <blockquote>
 <p><strong>mean()</strong> with <strong>amtdelinqt</strong> and <strong>landuse</strong> variables define your groups with compound statements first then calculate proportions</p>
 </blockquote>
 <p><img src="lab-02-instructions-v2_files/figure-html/unnamed-chunk-25-1.png" width="960" /></p>
 <p><br></p>
 </div>
-<div id="how-many-of-each-land-use-type-are-delinquint-on-taxes" class="section level4">
-<h4>8. How many of each land use type are delinquint on taxes?</h4>
+<div id="how-many-of-each-land-use-type-are-delinquent-on-taxes" class="section level4">
+<h4>8. How many of each land use type are delinquent on taxes?</h4>
 <blockquote>
-<p><strong>table()</strong> with <strong>amtdelinqt</strong> and <strong>landuse</strong> variables define delinquincy first, then create a table with landuse and delinquincy</p>
+<p><strong>table()</strong> with <strong>amtdelinqt</strong> and <strong>landuse</strong> variables define delinquency first, then create a table with landuse and delinquency</p>
 </blockquote>
 <p><br> <br></p>
 <hr />

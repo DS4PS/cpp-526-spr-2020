@@ -182,7 +182,7 @@ Load the map file:
 ```{r, cache=TRUE}
 URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/downtown-syr.geojson"
 downtown <- geojson_read( URL, what="sp" )
-plot( downtown,  border=NA, col="gray80" )
+plot( downtown,  border="gray50", col="gray80" )
 ```
 
 For this lab you will construct a group by translating the question into a logical statement, then show a map of the group by adapting the code provided:
@@ -200,7 +200,7 @@ To show the location of this group on a map:
 ```{r}
 these <- downtown$acres > 1                               # define your group
 group.colors <- ifelse( these, "firebrick", "gray80" )    # don't change this
-plot( downtown,  border=NA, col=group.colors )            # don't change this
+plot( downtown,  border="gray70", col=group.colors )      # don't change this
 ```
 
 
@@ -490,7 +490,6 @@ plot( downtown,  border=group.colors, lwd=3,
 #### 4. How many parcels have assessed values over $10 million? Map your results. 
 
 > use the **sum()** function with **assessedval** variable;  
-> create a group that includes parcels with apartments and two and three family homes 
 
 
 ```{r, echo=F, fig.height=7, eval=T}
@@ -505,7 +504,7 @@ plot( downtown,  border="gray70", col=group.colors,
 
 
     
-#### 5. How many properties are delinquient on taxes? Map your results. 
+#### 5. How many properties are delinquent on taxes? Map your results. 
 
 > **sum()** with the **amtdelinqt**;
 
@@ -514,7 +513,7 @@ plot( downtown,  border="gray70", col=group.colors,
 these <- downtown$amtdelinqt > 0                  
 group.colors <- ifelse( these, "firebrick", "gray90" )    
 plot( downtown,  border="gray70", col=group.colors,
-      main="Delinquint Taxes Owed")
+      main="Delinquent Taxes Owed")
 ```
 
 <br>
@@ -531,7 +530,7 @@ plot( downtown,  border="gray70", col=group.colors,
 
 
 
-#### 7. What proportion of commercial properties are delinquit on taxes? What proportion of delinquint tax bills are owed by commercial parcels? 
+#### 7. What proportion of commercial properties are delinquent on taxes? What proportion of delinquent tax bills are owed by commercial parcels? 
 
 > **mean()** with **amtdelinqt** and **landuse** variables
 > define your groups with compound statements first
@@ -543,23 +542,23 @@ par( mfrow=c(1,2), mar=c(0,0,2,0) )
 these <- downtown$landuse == "Commercial" & downtown$amtdelinqt > 0                      
 group.colors <- ifelse( these, "firebrick", "gray90" )    
 plot( downtown,  border="gray70", col=group.colors,
-      main="Tax Delinquint Commercial Properties")          
+      main="Tax Delinquent Commercial Properties")          
 
 these <- downtown$landuse != "Commercial" & downtown$amtdelinqt > 0                     
 group.colors <- ifelse( these, "steelblue", "gray90" )    
 plot( downtown,  border="gray70", col=group.colors,
-      main="Tax Delinquint Non-Commercial Properties")            
+      main="Tax Delinquent Non-Commercial Properties")            
 ```
 
 
 <br>
 
 
-#### 8. How many of each land use type are delinquint on taxes? 
+#### 8. How many of each land use type are delinquent on taxes? 
 
 > **table()** with **amtdelinqt** and **landuse** variables
-> define delinquincy first, then create a table with
-> landuse and delinquincy
+> define delinquency first, then create a table with
+> landuse and delinquency
 
 
 
