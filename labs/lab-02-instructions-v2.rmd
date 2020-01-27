@@ -70,7 +70,7 @@ compound statements with & (AND) and | (OR) operators
 
 ## Data
 
-This lab uses **city tax parcel data** from Syracuse, NY. 
+This lab uses [**city tax parcel data**](https://ds4ps.org/Data-Science-Class/DATA/syr_parcels.html), and open dataset released by the municipal government of Syracuse, NY. 
 
 * Each house, business, park or empty lot in the city sits on a parcel of land, and the tax rate for that parcel is determined by the city. 
 * All of the characteristics of each parcel is stored in a central database, along with information about the land use classifications, owners, and whether the property is up-to-date on taxes and water bills.  
