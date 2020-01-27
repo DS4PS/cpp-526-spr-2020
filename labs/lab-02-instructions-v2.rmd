@@ -276,7 +276,7 @@ The images are included so that you can check whether your logical statements ar
 
 #### 1. Where are the majority of vacant lots located in the downtown? Produce a map of your results that matches the one shown here. 
 
-> **land_use** variable 
+> **landuse** variable 
 
 ```{r, echo=F, fig.width=10, fig.height=7}
 par( mar=c(0,0,2,0) )
