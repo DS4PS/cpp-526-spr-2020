@@ -47,7 +47,10 @@ I have provided you with a **LAB-02 RMD template**:
 
 <br><br>
 
-## Functions
+# Getting Started 
+
+
+## Functions Used in this Lab
 
 You will use the following functions for this lab: 
 
@@ -65,7 +68,7 @@ compound statements with & (AND) and | (OR) operators
 
 
 
-# Data
+## Data
 
 This lab uses **city tax parcel data** from Syracuse, NY. 
 
@@ -74,12 +77,12 @@ This lab uses **city tax parcel data** from Syracuse, NY.
 * Each row represents one tax parcel, and all tax parcels in the city are recorded in the dataset.  
 
 
-```{r, cache=T}
+```{r, cache=T, echo=F}
 URL <- "https://raw.githubusercontent.com/DS4PS/Data-Science-Class/master/DATA/syr_parcels.geojson"
 syr <- geojson_read( URL, what="sp" )
 ```
 
-```{r, eval=F}
+```{r, eval=F, echo=F}
 these <- syr$landuse == "Single Family"
 group.colors <- ifelse( these, "firebrick", "gray90" )    
 plot( syr,  border=NA, col=group.colors,
@@ -102,6 +105,11 @@ plot( downtown,  border="gray20", col="gray90" )
 ```
 
 ```{r, echo=F, eval=F}
+# data prep steps -
+# cleaned some data,
+# renamed a couple of variables 
+# saved as new geojson file 
+
 keep <- 
 c("tax_id", "stnum", "stname", "zip",
 "frontfeet", "depth", "sqft", "acres", 
@@ -131,26 +139,30 @@ names( downtown ) <- new.names
 
 str( downtown@data )
 
-downtown$tax_id <- as.character( downtown$tax_id ) 
-downtown$sqft <- as.numeric( as.character( downtown$sqft ) )
-downtown$stnum <- as.character( downtown$stnum ) 
-downtown$stname <- as.character( downtown$stname ) 
-downtown$landuse <- as.character( downtown$landuse ) 
-downtown$yearbuilt <- as.numeric( as.character( downtown$yearbuilt ) )
+i <- sapply( dt@data, is.factor)
+dt@data[i] <- lapply( dt@data[i], as.character )
 
-geojson_write( downtown, file = "downtown-syr.geojson",
+str( dt@data )
+
+geojson_write( dt, file = "downtown-syr.geojson",
                geometry = "polygon" )
 
+
+
+# downtown$tax_id <- as.character( downtown$tax_id ) 
+# downtown$sqft <- as.numeric( as.character( downtown$sqft ) )
+# downtown$stnum <- as.character( downtown$stnum ) 
+# downtown$stname <- as.character( downtown$stname ) 
+# downtown$landuse <- as.character( downtown$landuse ) 
+# downtown$yearbuilt <- as.numeric( as.character( downtown$yearbuilt ) )
+
+
+# geojson_write( downtown, file = "downtown-syr.geojson",
+#                geometry = "polygon" )
+
 ```
 
 
-[ [Data Dictionary](https://ds4ps.github.io/Data-Science-Class/DATA/syr_parcels.html) ]
-
-*Note, the downtown file contains a subset of the fields.*
-
-```{r echo=F}
-head( downtown@data, 10 ) %>% pander() # show first ten rows of data
-```
 
 
 <br>
@@ -159,7 +171,7 @@ head( downtown@data, 10 ) %>% pander() # show first ten rows of data
 
 
 
-## Load the Downtown Syracuse Parcel Map
+#### Load the Downtown Syracuse Parcel Map
 
 You will need the following packages for this lab:
 
@@ -185,57 +197,35 @@ downtown <- geojson_read( URL, what="sp" )
 plot( downtown,  border="gray50", col="gray80" )
 ```
 
-For this lab you will construct a group by translating the question into a logical statement, then show a map of the group by adapting the code provided:
 
-**How many parcels are larger than one acre?**
+<br>
 
-```{r}
-these <- downtown$acres > 1   # the group I am defining
-sum( these )                  # count of parcels in our defined group
-mean( these )                 # proportion of total parcels in our defined group
-```
+-----
 
-To show the location of this group on a map:
-
-```{r}
-these <- downtown$acres > 1                               # define your group
-group.colors <- ifelse( these, "firebrick", "gray80" )    # don't change this
-plot( downtown,  border="gray70", col=group.colors )      # don't change this
-```
+<br>
 
 
+#### [Data Dictionary](https://ds4ps.github.io/Data-Science-Class/DATA/syr_parcels.html)
 
-**What proportion of downtown parcels are occupied by commercial buildings?**
+*Note, the downtown file contains a subset of the fields.*
 
-```{r}
-these <- downtown$landuse == "Commercial"
-mean( these )  # 54%
-```
-
-Plot commercial parcels on a map:
-
-```{r}
-these <- downtown$landuse == "Commercial"
-group.colors <- ifelse( these, "firebrick", "gray90" )     # don't change this
-plot( downtown,  border="gray70", col=group.colors )       # don't change this
+```{r, results="asis", echo=F, eval=F}
+cat( paste0( "* ", names(downtown), "  \n" ) )
 ```
 
 
-## Land Use
-
-To define group membership using character vectors or factors we need to know the current group names. We can find this using a **table()** or **unique()** function.
-
-```{r}
-unique( downtown$landuse )
-table( downtown$landuse )
+```{r echo=F}
+head( downtown@data, 10 ) %>% pander()  # print first ten lines of data
 ```
 
-Note that the spelling has to be identical for the statement to work. 
 
-```{r}
-sum( downtown$landuse == "Apartment" )
-sum( downtown$landuse == "apartment" )
-```
+<br>
+
+-----------
+
+<br>
+
+
 
 
 
@@ -244,9 +234,6 @@ sum( downtown$landuse == "apartment" )
 <br><br>
 
 # Lab Instructions
-
-
-
 
 
 
@@ -275,13 +262,19 @@ Answer the following questions using the Syracuse downtown parcels dataset and t
 
 Your solution should include a written response to the question, as well as the code used to generate the result.
 
+The images are included so that you can check whether your logical statements are correct. 
 
 --- 
 
+<br>
+
+## Questions 
 
 
 
-#### 1. Where are the majority of vacant lots located in the downtown? Map your results. 
+
+
+#### 1. Where are the majority of vacant lots located in the downtown? Produce a map of your results that matches the one shown here. 
 
 > **land_use** variable 
 
@@ -569,7 +562,7 @@ plot( downtown,  border="gray70", col=group.colors,
 
 ---
 
-#### Challenge Questions
+## Challenge Questions
 
 **Map all of the land valued at over $1 million per acre.**
 
@@ -620,7 +613,7 @@ plot( downtown,  border="gray97", col=group.colors,
 
 <br>
 
-# Submission Instructions
+## Submission Instructions
 
 When you have completed your assignment, knit your RMD file to generate your rendered HTML file. 
 
@@ -647,7 +640,7 @@ See [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml) for
 If you are having problems with your RMD file, visit the [**RMD File Styles and Knitting Tips**](https://ds4ps.org/cpp-526-fall-2019/labs/r-markdown-files.html) manual.
 
 
-### Notes on Knitting
+#### Notes on Knitting
 
 Note that when you knit a file, it starts from a blank slate. You might have packages loaded or datasets active on your local machine, so you can run code chunks fine. But when you knit you might get errors that functions cannot be located or datasets don't exist. Be sure that you have included chunks to load these in your RMD file.
 
@@ -655,12 +648,107 @@ Your RMD file will not knit if you have errors in your code. If you get stuck on
 
 
 <br>
+
+---------
+
 <br>
+
+
+
+
+
+
+# Helpful Hints 
+
+Some things to keep in mind as you get started: 
+
+
+
+
+
+## Steps in Identifying Groups
+
+For this lab you will construct a group by translating some management question from plain English into a logical statement, then show a map of the newly constructed group by adapting the code provided:
+
+**How many parcels are larger than one acre?**
+
+```{r}
+these <- downtown$acres > 1   # the group I am defining
+sum( these )                  # count of parcels in our defined group
+mean( these )                 # proportion of total parcels in our defined group
+```
+
+To show the location of this group on a map:
+
+```{r}
+these <- downtown$acres > 1                               # define your group
+group.colors <- ifelse( these, "firebrick", "gray80" )    # don't change this
+plot( downtown,  border="gray70", col=group.colors )      # don't change this
+```
+
+
+
+**What proportion of downtown parcels are occupied by commercial buildings?**
+
+```{r}
+these <- downtown$landuse == "Commercial"
+mean( these )  # 54%
+```
+
+Plot commercial parcels on a map:
+
+```{r}
+these <- downtown$landuse == "Commercial"
+group.colors <- ifelse( these, "firebrick", "gray90" )     # don't change this
+plot( downtown,  border="gray70", col=group.colors )       # don't change this
+```
+
+
+<br>
+
+-----------
+
+<br>
+
+
+
+## Identifying Unique Values
+
+We will often define a group using criteria relevant to the management question. For example, we might want to look at all single family homes that are valued over $250,000 in a city. Or perhaps we want to identify all commercial properties that are delinquent on taxes. These are examples of compound logical statements that combine information from two or more variables (land use and value, or land use and tax status). 
+
+```{r, eval=F}
+# single family homes worth more than $250,000
+downtown$landuse == "Single Family"   &    downtown$assessedval > 250000
+```
+
+
+We can find the current category levels defined within factors or character vectors using a **table()** or **unique()** function.
+
+```{r}
+table( downtown$landuse )
+unique( downtown$landuse )
+```
+
+Note that the spelling has to be precise for the statement to work correctly. 
+
+```{r}
+sum( downtown$landuse == "Apartment" )
+sum( downtown$landuse == "apartment" )
+```
+
+
+<br>
+
+-----------
+
+<br>
+
+
 
 
 ## Missing Values
 
-Note, when there are missing values in a vector (NAs) you need to tell mathematical functions like **sum()** and **mean()** to ignore them, otherwise they will return NA. 
+When there are missing values (**_NA_**s) in a vector  you need to tell mathematical functions like **sum()** and **mean()** to ignore them, otherwise they will return NA. 
 
 ```{r}
 x <- c( 1, 2, NA, 4 )
@@ -668,7 +756,7 @@ sum( x )
 sum( x, na.rm=T )
 ```
 
-Any ideas why R would default to NA for mathematical functions? 
+Any ideas why R would default to `NA` for mathematical functions? 
 
 Consider an example with a free museum that brings in a special exhibit. They don't charge when you enter, but if you visit the special exhibit you have the option to make a donation to support the event. The computer logs all visitors, but it only enters values for those that visited the special exhibit.
 
@@ -701,21 +789,38 @@ x <- c( NA, NA, 20, NA, 0, 15, NA, 45, NA, NA, NA, NA, 10, 0, NA, NA )
 mean( x, na.rm=T )
 ```
 
-Let's look at that again: 
+When you add **na.rm=T** to the function it will drop all cases with missing data. 
+
+Let's look at the data again and think about the counts of people more precisely:
 
 ```{r}
-# average donation for all visitors
-sum( x, na.rm=T ) / length( x )
+# number of people that visit the museum
+length( x )
 
 # number of people that attended the exhibit
 sum( x >= 0, na.rm=T )
 
-# proportion of people that attended the exhibit
+# proportion of museum visitors that attended the exhibit
 sum( x >= 0, na.rm=T ) / length( x )
 
-# average donation for those that went to the exhibit
+# average donation for ALL museum visitors
+sum( x, na.rm=T ) / length( x )
+
+# average donation for ONLY THOSE that went to the exhibit
 sum( x, na.rm=T ) / sum( x >= 0, na.rm=T )
 ```
+
+Our initial estimate was incorrect. We multiplied all museum visitors by the average donation of those that attended the exhibit, a subset of all visitors. We will greatly over-estimate the expected event revenue as a result.  
+
+```{r}
+# if we know that 200 people will visit the meseum this weekend,
+# how much do we expect the special exhibit to raise? 
+#
+# people visiting x average donation per person
+200 * mean( x, na.rm=T )
+```
+
+
 To get an accurate estimate of the special event revenues we need to consider how many museum visitors will attend the exhibit: 
  
 ```{r}
@@ -746,7 +851,13 @@ Missing values means something different in every context, so pay attention to t
 
 
 <br>
+
+-----------
+
 <br>
+
+
+
 
 ## Compound Logical Statements 
 
