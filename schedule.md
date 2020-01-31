@@ -4,7 +4,7 @@ title: Schedule
 
 canvas: 
   assignment_url: 'https://canvas.asu.edu/courses/41578/assignments'
-  yellowdig_url: 'https://www.yellowdig.com/board/43114'
+  yellowdig_url: 'https://canvas.asu.edu/courses/41578/assignments/959542'
 ---
  
 <!--- 
