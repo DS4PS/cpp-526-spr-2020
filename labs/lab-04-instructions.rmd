@@ -144,7 +144,7 @@ data( Teams )
 
 Use the following template to complete this lab: 
 
-[RMD Template](https://www.dropbox.com/s/lfw91ev0fl182n3/lab-04-template.rmd?dl=1)
+[![](images/download.png)](https://www.dropbox.com/s/lfw91ev0fl182n3/lab-04-template.rmd?dl=1)
 
 
 
