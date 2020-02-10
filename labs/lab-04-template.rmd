@@ -7,10 +7,13 @@ runtime: shiny
 ```{r global, include=FALSE}
 library( dplyr )
 library( Lahman )
+
 data( Teams )
 
 ave.so <- Teams$SO / Teams$G  # average strike-outs per game each season 
 year <- Teams$yearID
+
+Teams$ave.so <- Teams$SO / Teams$G  # add back to data frame so you can subset
 
 # min and max values needed to create your plot window 
 ave.so.min <- min( ave.so, na.rm=T )

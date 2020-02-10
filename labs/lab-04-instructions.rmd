@@ -5,6 +5,8 @@ output:
     theme: readable
     df_print: paged
     highlight: tango
+    include:
+      after_body: footer.html
 ---
 
 
@@ -34,6 +36,8 @@ This lab builds on the previous lab, but you will now add the drop-down menu sim
 ## Dynamic Graphics
 
 Shiny allows you to build interactive components in graphics or dashboards. The terms "dynamic" or "interactive" mean specifically that a set of widgets are used to gather user input, and that input changes the analysis or visualization accordingly. 
+
+![](images/cpp-526-lab-04-demo.gif)
 
 You can try it out using the Shiny Demo file or the example from the [Shiny tutorial](https://rmarkdown.rstudio.com/flexdashboard/shiny.html#loading_data): 
 
