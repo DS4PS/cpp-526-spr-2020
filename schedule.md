@@ -1202,7 +1202,7 @@ Since you are sharing your code-through with your classmates on Yellowdig, it wi
 
 If you send me your RMD and HTML files via email, I will post them to GitHub and create a link for you if you would like to share a URL instead of a file. 
 
-<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/LABS/code-through-assignment.html">Code-Through Instructions</a>
+<a class="uk-button uk-button-default" href="https://ds4ps.org/cpp-526-spr-2020/labs/code-through-assignment.html">Code-Through Instructions</a>
 
 ## Submit to Canvas:
 
