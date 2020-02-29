@@ -1206,7 +1206,8 @@ If you send me your RMD and HTML files via email, I will post them to GitHub and
 
 ## Submit to Canvas:
 
-<a class="uk-button uk-button-primary" href="https://canvas.asu.edu/courses/29528/assignments/814647">SUBMIT CODE-THROUGH</a>
+<a class="uk-button uk-button-primary" href="{{page.canvas.assignment_url}}">SUBMIT CODE-THROUGH</a>
+
 
 ## Post on Yellowdig
 
